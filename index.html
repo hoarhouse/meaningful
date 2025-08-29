@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Communication Decoder</title>
+    <title>Meaningful</title>
     <style>
         * {
             margin: 0;
@@ -166,7 +166,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Communication Decoder</h1>
+        <h1>Meaningful</h1>
         
         <!-- Toggle Buttons -->
         <div class="toggle-container">
@@ -240,23 +240,72 @@
     </div>
 
     <script>
-        // Database of common translations
+        // Database of common translations - organized by category
         const translations = [
-            { says: "i'm fine", means: "I'm upset but don't want to discuss it" },
-            { says: "that's interesting", means: "I disagree but I'm being polite" },
-            { says: "we should get coffee sometime", means: "I'm just being nice, not making real plans" },
-            { says: "no worries", means: "I'm actually annoyed but trying to be professional" },
-            { says: "whatever", means: "I'm frustrated and giving up on this conversation" },
-            { says: "sure, no problem", means: "I'm agreeing but I'm not happy about it" },
-            { says: "i don't care", means: "I care a lot but I'm protecting myself" },
-            { says: "it's up to you", means: "I have a preference but I don't want to say it directly" },
-            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict" },
-            { says: "that's nice", means: "I'm not impressed but I'm being polite" },
-            { says: "if you say so", means: "I think you're wrong but I don't want to argue" },
-            { says: "i'm just tired", means: "Something is bothering me but I don't want to explain" },
-            { says: "it's not a big deal", means: "This is actually important to me" },
-            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you" },
-            { says: "sounds good", means: "I'm agreeing but I might not be enthusiastic about it" }
+            // RELATIONSHIP/PERSONAL (12 examples)
+            { says: "i'm fine", means: "I'm upset but don't want to discuss it", category: "relationship" },
+            { says: "i don't care", means: "I care a lot but I'm protecting myself", category: "relationship" },
+            { says: "i'm just tired", means: "Something is bothering me but I don't want to explain", category: "relationship" },
+            { says: "it's not a big deal", means: "This is actually important to me", category: "relationship" },
+            { says: "nothing's wrong", means: "Something is definitely wrong but I want you to figure it out", category: "relationship" },
+            { says: "do whatever you want", means: "I have strong feelings about this but I'm testing you", category: "relationship" },
+            { says: "i'm not mad", means: "I'm actually very upset", category: "relationship" },
+            { says: "forget about it", means: "I don't want to forget about it, I want you to make it right", category: "relationship" },
+            { says: "you wouldn't understand", means: "I want to talk but I feel like you don't listen to me", category: "relationship" },
+            { says: "it doesn't matter", means: "It matters a lot to me but I'm giving up", category: "relationship" },
+            { says: "i'm used to it", means: "This hurts me but I've accepted that you won't change", category: "relationship" },
+            { says: "never mind", means: "I wanted to share something but now I feel dismissed", category: "relationship" },
+            
+            // WORKPLACE/PROFESSIONAL (12 examples)
+            { says: "that's interesting", means: "I disagree but I'm being polite", category: "workplace" },
+            { says: "no worries", means: "I'm actually annoyed but trying to be professional", category: "workplace" },
+            { says: "sure, no problem", means: "I'm agreeing but I'm not happy about it", category: "workplace" },
+            { says: "sounds good", means: "I'm agreeing but I might not be enthusiastic about it", category: "workplace" },
+            { says: "let's circle back on this", means: "I don't want to deal with this right now", category: "workplace" },
+            { says: "i'll take that into consideration", means: "I've already decided but I'm being polite", category: "workplace" },
+            { says: "that's above my pay grade", means: "I don't want to take responsibility for this decision", category: "workplace" },
+            { says: "let's take this offline", means: "This conversation is getting uncomfortable or inappropriate for this setting", category: "workplace" },
+            { says: "i'll look into it", means: "I probably won't prioritize this unless you follow up", category: "workplace" },
+            { says: "we should sync up soon", means: "I'm avoiding giving you a definitive answer right now", category: "workplace" },
+            { says: "i don't have bandwidth for that", means: "This isn't a priority for me but I don't want to say no directly", category: "workplace" },
+            { says: "thanks for flagging that", means: "I'm acknowledging your concern but may not act on it", category: "workplace" },
+            
+            // POLITE REJECTION (11 examples)
+            { says: "we should get coffee sometime", means: "I'm just being nice, not making real plans", category: "polite-rejection" },
+            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict", category: "polite-rejection" },
+            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you", category: "polite-rejection" },
+            { says: "i'll think about it", means: "I'm not interested but I don't want to hurt your feelings", category: "polite-rejection" },
+            { says: "let me check my schedule", means: "I don't want to commit but I'm buying time", category: "polite-rejection" },
+            { says: "i'll get back to you", means: "I'm hoping you'll forget about this request", category: "polite-rejection" },
+            { says: "we'll see", means: "Probably not, but I don't want to say no directly", category: "polite-rejection" },
+            { says: "that sounds nice but", means: "I'm about to give you an excuse to avoid this", category: "polite-rejection" },
+            { says: "i wish i could help", means: "I could help but I don't want to", category: "polite-rejection" },
+            { says: "maybe some other time", means: "I don't want to do this now or ever", category: "polite-rejection" },
+            { says: "i'll keep that in mind", means: "I'm dismissing your suggestion politely", category: "polite-rejection" },
+            
+            // EMOTIONAL DEFLECTION (10 examples)
+            { says: "it's up to you", means: "I have a preference but I don't want to say it directly", category: "emotional-deflection" },
+            { says: "that's nice", means: "I'm not impressed but I'm being polite", category: "emotional-deflection" },
+            { says: "i don't want to talk about it", means: "I need to talk but I'm scared of being vulnerable", category: "emotional-deflection" },
+            { says: "it's complicated", means: "I have feelings about this but I don't know how to express them", category: "emotional-deflection" },
+            { says: "i'm over it", means: "I'm definitely not over it but I want to appear strong", category: "emotional-deflection" },
+            { says: "it is what it is", means: "I'm hurt but I'm trying to accept something I can't change", category: "emotional-deflection" },
+            { says: "i don't know", means: "I do know but I'm afraid of the consequences of saying it", category: "emotional-deflection" },
+            { says: "whatever happens happens", means: "I'm scared of the outcome but trying to seem indifferent", category: "emotional-deflection" },
+            { says: "i'm just focusing on myself", means: "I'm hurt by someone but don't want to seem needy", category: "emotional-deflection" },
+            { says: "i don't really care either way", means: "I care deeply but I'm protecting myself from disappointment", category: "emotional-deflection" },
+            
+            // PASSIVE AGGRESSIVE (10 examples)
+            { says: "whatever", means: "I'm frustrated and giving up on this conversation", category: "passive-aggressive" },
+            { says: "if you say so", means: "I think you're wrong but I don't want to argue", category: "passive-aggressive" },
+            { says: "thanks for letting me know", means: "I'm annoyed you didn't tell me this sooner", category: "passive-aggressive" },
+            { says: "sure thing", means: "I'm agreeing but I'm irritated about it", category: "passive-aggressive" },
+            { says: "no big deal", means: "This is actually a big deal but I'm being sarcastic", category: "passive-aggressive" },
+            { says: "i guess that works", means: "I don't think it works but I'm done fighting", category: "passive-aggressive" },
+            { says: "you're probably right", means: "I think you're wrong but I don't want to argue anymore", category: "passive-aggressive" },
+            { says: "that's one way to do it", means: "I think your way is wrong or inefficient", category: "passive-aggressive" },
+            { says: "interesting choice", means: "I think you made a bad decision", category: "passive-aggressive" },
+            { says: "good for you", means: "I'm not impressed and might be a little jealous or annoyed", category: "passive-aggressive" }
         ];
 
         function showMode(mode) {
