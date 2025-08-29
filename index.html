@@ -1,9 +1,336 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Communication Decoder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .toggle-container {
+            background-color: #f5f5f7;
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 30px;
+            display: flex;
+        }
+
+        .toggle-button {
+            flex: 1;
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            color: #86868b;
+        }
+
+        .toggle-button.active {
+            background-color: #ffffff;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 80px;
+            transition: border-color 0.2s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .decode-button {
+            width: 100%;
+            padding: 16px 24px;
+            background-color: #1d1d1f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 32px 0;
+        }
+
+        .decode-button:hover {
+            background-color: #2d2d2f;
+            transform: translateY(-1px);
+        }
+
+        .decode-button:active {
+            transform: translateY(0);
+        }
+
+        .result-area {
+            background-color: #f5f5f7;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            min-height: 120px;
+            display: none;
+        }
+
+        .result-area.show {
+            display: block;
+        }
+
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+        }
+
+        .result-text {
+            line-height: 1.5;
+            color: #424245;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <div class="container">
+        <h1>Communication Decoder</h1>
+        
+        <!-- Toggle Buttons -->
+        <div class="toggle-container">
+            <button class="toggle-button active" onclick="showMode('conversation')">
+                Full Conversation
+            </button>
+            <button class="toggle-button" onclick="showMode('decode')">
+                Quick Decode
+            </button>
+        </div>
+
+        <!-- Full Conversation Mode -->
+        <div id="conversation-mode" class="form-section active">
+            <div class="input-group">
+                <label for="what-i-said">What I said:</label>
+                <textarea id="what-i-said" placeholder="Enter what you said to them..."></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="what-they-said">What they said back:</label>
+                <textarea id="what-they-said" placeholder="Enter their response..."></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="conversation-context">Context:</label>
+                <select id="conversation-context">
+                    <option value="">Select context (optional)</option>
+                    <option value="work-colleague">Work colleague</option>
+                    <option value="boss">Boss/Manager</option>
+                    <option value="family">Family member</option>
+                    <option value="friend">Friend</option>
+                    <option value="spouse-partner">Spouse/Partner</option>
+                    <option value="customer">Customer/Client</option>
+                    <option value="stranger">Stranger</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Quick Decode Mode -->
+        <div id="decode-mode" class="form-section">
+            <div class="input-group">
+                <label for="their-message">What they said:</label>
+                <textarea id="their-message" placeholder="Paste or type what they said..."></textarea>
+            </div>
+            
+            <div class="input-group">
+                <label for="decode-context">Context:</label>
+                <select id="decode-context">
+                    <option value="">Select context (optional)</option>
+                    <option value="work-colleague">Work colleague</option>
+                    <option value="boss">Boss/Manager</option>
+                    <option value="family">Family member</option>
+                    <option value="friend">Friend</option>
+                    <option value="spouse-partner">Spouse/Partner</option>
+                    <option value="customer">Customer/Client</option>
+                    <option value="stranger">Stranger</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Decode Button -->
+        <button class="decode-button" onclick="decodeMessage()">
+            Decode Message
+        </button>
+
+        <!-- Result Area -->
+        <div id="result-area" class="result-area">
+            <div class="result-title">Decoded Message:</div>
+            <div id="result-text" class="result-text"></div>
+        </div>
+    </div>
+
+    <script>
+        // Database of common translations
+        const translations = [
+            { says: "i'm fine", means: "I'm upset but don't want to discuss it" },
+            { says: "that's interesting", means: "I disagree but I'm being polite" },
+            { says: "we should get coffee sometime", means: "I'm just being nice, not making real plans" },
+            { says: "no worries", means: "I'm actually annoyed but trying to be professional" },
+            { says: "whatever", means: "I'm frustrated and giving up on this conversation" },
+            { says: "sure, no problem", means: "I'm agreeing but I'm not happy about it" },
+            { says: "i don't care", means: "I care a lot but I'm protecting myself" },
+            { says: "it's up to you", means: "I have a preference but I don't want to say it directly" },
+            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict" },
+            { says: "that's nice", means: "I'm not impressed but I'm being polite" },
+            { says: "if you say so", means: "I think you're wrong but I don't want to argue" },
+            { says: "i'm just tired", means: "Something is bothering me but I don't want to explain" },
+            { says: "it's not a big deal", means: "This is actually important to me" },
+            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you" },
+            { says: "sounds good", means: "I'm agreeing but I might not be enthusiastic about it" }
+        ];
+
+        function showMode(mode) {
+            // Update toggle buttons
+            document.querySelectorAll('.toggle-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Show/hide form sections
+            document.querySelectorAll('.form-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            if (mode === 'conversation') {
+                document.getElementById('conversation-mode').classList.add('active');
+            } else {
+                document.getElementById('decode-mode').classList.add('active');
+            }
+        }
+
+        function decodeMessage() {
+            const resultArea = document.getElementById('result-area');
+            const resultText = document.getElementById('result-text');
+            
+            // Get the active mode
+            const conversationMode = document.getElementById('conversation-mode').classList.contains('active');
+            
+            let messageToAnalyze = '';
+            let context = '';
+            
+            if (conversationMode) {
+                const whatISaid = document.getElementById('what-i-said').value.trim();
+                const whatTheySaid = document.getElementById('what-they-said').value.trim();
+                context = document.getElementById('conversation-context').value;
+                
+                if (!whatTheySaid) {
+                    resultText.innerHTML = "Please enter what they said back to you.";
+                    resultArea.classList.add('show');
+                    return;
+                }
+                
+                messageToAnalyze = whatTheySaid.toLowerCase();
+                
+                // Show conversation context in result
+                if (whatISaid) {
+                    resultText.innerHTML = `<strong>Context:</strong> You said: "${whatISaid}"<br><br>`;
+                }
+            } else {
+                messageToAnalyze = document.getElementById('their-message').value.trim().toLowerCase();
+                context = document.getElementById('decode-context').value;
+                
+                if (!messageToAnalyze) {
+                    resultText.innerHTML = "Please enter a message to decode.";
+                    resultArea.classList.add('show');
+                    return;
+                }
+            }
+            
+            // Look for matches in our translation database
+            const match = translations.find(t => 
+                messageToAnalyze.includes(t.says) || 
+                t.says.includes(messageToAnalyze)
+            );
+            
+            if (match) {
+                const contextInfo = context ? ` (${context.replace('-', ' ')})` : '';
+                resultText.innerHTML += `<strong>Possible translation:</strong><br>"${match.means}"${contextInfo}`;
+            } else {
+                resultText.innerHTML += `<strong>No direct translation found.</strong><br>This might be straightforward, or it could be context-specific. Consider the relationship and situation for hidden meanings.`;
+            }
+            
+            resultArea.classList.add('show');
+        }
+    </script>
 </body>
 </html>
