@@ -210,7 +210,7 @@
                     <option value="authority-figure">Authority Figure</option>
                     <option value="online-text">Online/Text Message</option>
                     <option value="group-setting">Group Setting</option>
-                    <option value="romantic-interest">Romantic Interest</option>      
+                    <option value="romantic-interest">Romantic Interest</option>
                 </select>
             </div>
         </div>
@@ -242,8 +242,7 @@
                     <option value="authority-figure">Authority Figure</option>
                     <option value="online-text">Online/Text Message</option>
                     <option value="group-setting">Group Setting</option>
-                    <option value="romantic-interest">Romantic Interest</option>      
-                    
+                    <option value="romantic-interest">Romantic Interest</option>
                 </select>
             </div>
         </div>
@@ -393,13 +392,57 @@
             );
             
             if (match) {
+                let contextualMeaning = match.means;
+                
+                // Add context-specific interpretations
+                if (context) {
+                    contextualMeaning += getContextualInsight(match.says, context);
+                }
+                
                 const contextInfo = context ? ` (${context.replace('-', ' ')})` : '';
-                resultText.innerHTML += `<strong>Possible translation:</strong><br>"${match.means}"${contextInfo}`;
+                resultText.innerHTML += `<strong>Possible translation:</strong><br>"${contextualMeaning}"${contextInfo}`;
             } else {
                 resultText.innerHTML += `<strong>No direct translation found.</strong><br>This might be straightforward, or it could be context-specific. Consider the relationship and situation for hidden meanings.`;
             }
             
             resultArea.classList.add('show');
+        }
+
+        function getContextualInsight(phrase, context) {
+            const contextInsights = {
+                "i'm fine": {
+                    "teenager": "<br><br><em>From a teenager:</em> Likely means they're upset but don't want to talk to an adult about it.",
+                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Usually means they want you to ask more questions and show you care.",
+                    "ex-partner": "<br><br><em>From ex-partner:</em> Could mean they're trying to appear unaffected by your presence/communication.",
+                    "child": "<br><br><em>From a child:</em> Might mean they're sad or in trouble but afraid of getting in more trouble."
+                },
+                "that's interesting": {
+                    "boss": "<br><br><em>From boss:</em> Likely means they disagree with your idea but are being diplomatic.",
+                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could mean they're not impressed but trying to be nice on a date.",
+                    "parent": "<br><br><em>From parent:</em> Usually means they think your choice is questionable but don't want to lecture."
+                },
+                "whatever": {
+                    "teenager": "<br><br><em>From teenager:</em> Classic dismissive response when they feel misunderstood or controlled.",
+                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Sign they're frustrated and feeling unheard in the relationship.",
+                    "online-text": "<br><br><em>Via text:</em> Often more harsh than intended - tone is hard to convey in text."
+                },
+                "no worries": {
+                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of saying they're annoyed but maintaining workplace courtesy.",
+                    "service-worker": "<br><br><em>From service worker:</em> Trained response - they might actually be stressed but can't show it.",
+                    "friend": "<br><br><em>From friend:</em> Usually genuine, but could mean they're tired of helping with this issue."
+                },
+                "we should get coffee sometime": {
+                    "work-colleague": "<br><br><em>From colleague:</em> Polite networking phrase - unlikely to result in actual plans.",
+                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could be genuine interest or polite rejection depending on their other signals.",
+                    "stranger": "<br><br><em>From stranger:</em> Almost certainly just being polite, not a real invitation."
+                }
+            };
+            
+            if (contextInsights[phrase] && contextInsights[phrase][context]) {
+                return contextInsights[phrase][context];
+            }
+            
+            return "";
         }
     </script>
 </body>
