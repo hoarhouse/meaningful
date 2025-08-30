@@ -222,15 +222,7 @@
     </style>
 </head>
 <body>
-    <div id="login-screen" class="login-screen">
-        <div class="login-box">
-            <h2>Access Required</h2>
-            <p>Please enter the password to continue:</p>
-            <input type="password" id="password-input" class="login-input" placeholder="Password">
-            <button onclick="checkPassword()" class="login-button">Access App</button>
-            <div id="login-error" class="login-error hidden">Incorrect password. Try again.</div>
-        </div>
-    </div>
+    <!-- PASSWORD PROTECTION TEMPORARILY REMOVED FOR TESTING -->
 
     <div class="container">
         <div class="auth-status" id="auth-status" style="display: none;">
@@ -389,28 +381,43 @@
             return false;
         }
 
-        // Function to call our serverless function instead of Claude directly
+        // Function to call Claude API
         async function callClaudeAPI(phrase, context) {
+            const prompt = `What does "${phrase}" really mean when said by a ${context.replace('-', ' ')}? 
+
+Please provide:
+1. The likely hidden meaning or subtext
+2. The emotional motivation behind saying this
+3. What they might actually want or need
+
+Keep the response concise but insightful, around 2-3 sentences total.`;
+
             try {
-                const response = await fetch('/api/decode', {
-                    method: 'POST',
+                const response = await fetch(CLAUDE_API_URL, {
+                    method: "POST",
                     headers: {
-                        'Content-Type': 'application/json'
+                        "Content-Type": "application/json",
+                        "x-api-key": CLAUDE_API_KEY,
+                        "anthropic-version": "2023-06-01"
                     },
                     body: JSON.stringify({
-                        phrase: phrase,
-                        context: context
+                        model: "claude-3-sonnet-20240229",
+                        max_tokens: 300,
+                        messages: [{
+                            role: "user",
+                            content: prompt
+                        }]
                     })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`API error: ${response.status}`);
+                    throw new Error(`Claude API error: ${response.status}`);
                 }
 
                 const data = await response.json();
-                return data.response;
+                return data.content[0].text;
             } catch (error) {
-                console.error('Function call error:', error);
+                console.error('Claude API error:', error);
                 return null;
             }
         }
