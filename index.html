@@ -192,9 +192,54 @@
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1Y2luenRiaHJ5cGV1ZXdwc3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTcxODgsImV4cCI6MjA3MjEzMzE4OH0.FyTxraNooNkc9fNRK3DicOC6jRB1POHeYVIpxF5SOXE';
         const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-        // Global variables to store database data
-        let phrasesData = [];
-        let isLoading = false;
+        // Function to normalize text for better matching
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .replace(/['".,!?;:]/g, '') // Remove punctuation
+                .replace(/\s+/g, ' ') // Normalize spaces
+                .trim();
+        }
+
+        // Function to check if two phrases are similar
+        function phrasesMatch(userPhrase, dbPhrase) {
+            const normalizedUser = normalizeText(userPhrase);
+            const normalizedDb = normalizeText(dbPhrase);
+            
+            // Exact match
+            if (normalizedUser === normalizedDb) return true;
+            
+            // Handle contractions
+            const contractedUser = normalizedUser
+                .replace(/nothing is/g, 'nothings')
+                .replace(/i am/g, 'im')
+                .replace(/you are/g, 'youre')
+                .replace(/it is/g, 'its')
+                .replace(/that is/g, 'thats')
+                .replace(/do not/g, 'dont')
+                .replace(/will not/g, 'wont')
+                .replace(/cannot/g, 'cant');
+                
+            const contractedDb = normalizedDb
+                .replace(/nothing is/g, 'nothings')
+                .replace(/i am/g, 'im')
+                .replace(/you are/g, 'youre')
+                .replace(/it is/g, 'its')
+                .replace(/that is/g, 'thats')
+                .replace(/do not/g, 'dont')
+                .replace(/will not/g, 'wont')
+                .replace(/cannot/g, 'cant');
+            
+            if (contractedUser === contractedDb) return true;
+            
+            // Check if one contains the other (for partial matches)
+            if (normalizedUser.includes(normalizedDb) || normalizedDb.includes(normalizedUser)) return true;
+            
+            // Check contracted versions contain each other
+            if (contractedUser.includes(contractedDb) || contractedDb.includes(contractedUser)) return true;
+            
+            return false;
+        }
 
         // Load phrases from database on page load
         async function loadPhrasesFromDatabase() {
@@ -275,14 +320,8 @@
                 }
             }
             
-            // Look for exact matches first, then partial matches
-            let match = phrasesData.find(phrase => phrase.phrase_text === messageToAnalyze);
-            if (!match) {
-                match = phrasesData.find(phrase => 
-                    messageToAnalyze.includes(phrase.phrase_text) || 
-                    phrase.phrase_text.includes(messageToAnalyze)
-                );
-            }
+            // Look for matches using improved matching
+            let match = phrasesData.find(phrase => phrasesMatch(messageToAnalyze, phrase.phrase_text));
             
             if (match) {
                 let result = `<strong>General meaning:</strong><br>"${match.general_meaning}"`;
