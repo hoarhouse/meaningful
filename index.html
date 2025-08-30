@@ -185,147 +185,69 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
-        // Comprehensive phrase database with meanings
-        const translations = [
-            // CLASSIC DEFLECTION PHRASES
-            { says: "i'm fine", means: "I'm upset but don't want to discuss it or I want you to ask more questions" },
-            { says: "nothing's wrong", means: "Something is definitely wrong but I want you to figure it out" },
-            { says: "i don't care", means: "I care deeply but I'm protecting myself from disappointment" },
-            { says: "whatever", means: "I'm frustrated and giving up on this conversation" },
-            { says: "it doesn't matter", means: "It matters a lot to me but I'm giving up trying to make you understand" },
-            { says: "forget about it", means: "I don't want to forget - I want you to make it right" },
-            { says: "never mind", means: "I wanted to share something but now I feel dismissed" },
-            
-            // PASSIVE AGGRESSIVE RESPONSES  
-            { says: "if you say so", means: "I think you're wrong but I don't want to argue" },
-            { says: "sure thing", means: "I'm agreeing but I'm irritated about it" },
-            { says: "no big deal", means: "This is actually a big deal but I'm being sarcastic" },
-            { says: "you're probably right", means: "I think you're wrong but I'm done fighting" },
-            { says: "that's one way to do it", means: "I think your way is wrong or inefficient" },
-            { says: "interesting choice", means: "I think you made a bad decision" },
-            { says: "good for you", means: "I'm not impressed and might be jealous" },
-            { says: "good luck with that", means: "I think you're making a mistake" },
-            { says: "you do you", means: "I disagree with your choice but I'm done trying to help" },
-            
-            // POLITE REJECTION
-            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict" },
-            { says: "we should get coffee sometime", means: "I'm just being polite, not making real plans" },
-            { says: "i'll think about it", means: "I'm not interested but don't want to hurt your feelings" },
-            { says: "let me check my schedule", means: "I don't want to commit but I'm buying time" },
-            { says: "i'll get back to you", means: "I'm hoping you'll forget about this request" },
-            { says: "we'll see", means: "Probably not, but I don't want to say no directly" },
-            { says: "maybe some other time", means: "I don't want to do this now or ever" },
-            { says: "rain check", means: "I'm postponing this indefinitely" },
-            
-            // WORKPLACE DIPLOMACY
-            { says: "that's interesting", means: "I disagree but I'm being polite" },
-            { says: "no worries", means: "I'm actually annoyed but trying to be professional" },
-            { says: "sounds good", means: "I'm agreeing but might not be enthusiastic" },
-            { says: "let's circle back on this", means: "I don't want to deal with this right now" },
-            { says: "i'll take that into consideration", means: "I've already decided but I'm being polite" },
-            { says: "let's take this offline", means: "This conversation is getting uncomfortable" },
-            { says: "i'll look into it", means: "I probably won't prioritize this unless you follow up" },
-            { says: "thanks for flagging that", means: "I'm acknowledging your concern but may not act on it" },
-            
-            // EMOTIONAL AVOIDANCE
-            { says: "it's up to you", means: "I have a preference but don't want to say it directly" },
-            { says: "that's nice", means: "I'm not impressed but I'm being polite" },
-            { says: "i don't want to talk about it", means: "I need to talk but I'm scared of being vulnerable" },
-            { says: "it's complicated", means: "I have feelings but don't know how to express them" },
-            { says: "i'm over it", means: "I'm definitely not over it but want to appear strong" },
-            { says: "it is what it is", means: "I'm hurt but trying to accept something I can't change" },
-            { says: "i don't know", means: "I do know but I'm afraid of the consequences" },
-            
-            // STRESS & OVERWHELM
-            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you" },
-            { says: "i'm tired", means: "Something is bothering me but I don't want to explain" },
-            { says: "i can handle it", means: "I'm struggling but don't want to appear weak" },
-            { says: "don't worry about me", means: "I need help but don't want to burden you" },
-            { says: "i'm fine on my own", means: "I'm hurt but trying to appear independent" },
-            
-            // RELATIONSHIP SPECIFIC
-            { says: "do whatever you want", means: "I have strong feelings about this but I'm testing you" },
-            { says: "i'm not mad", means: "I'm actually very upset right now" },
-            { says: "you wouldn't understand", means: "I want to talk but feel like you don't listen" },
-            { says: "i'm used to it", means: "This hurts but I've accepted you won't change" },
-            
-            // PROFESSIONAL STALLING
-            { says: "i don't have bandwidth for that", means: "This isn't a priority but I don't want to say no directly" },
-            { says: "that's above my pay grade", means: "I don't want responsibility for this decision" },
-            { says: "we should sync up soon", means: "I'm avoiding giving you a definitive answer" },
-            { says: "let me run it by my team", means: "I'm stalling or don't want to take personal responsibility" },
-            { says: "that's not really my area", means: "I don't want to handle this" },
-            
-            // DISMISSIVE RESPONSES
-            { says: "if you insist", means: "I disagree but I'm reluctantly complying" },
-            { says: "suit yourself", means: "I think you're making a mistake but I'm done caring" },
-            { says: "that's your choice", means: "I disagree with your decision but won't stop you" },
-            { says: "must be nice", means: "I'm jealous or resentful about your situation" },
-            { says: "i'm sure you know best", means: "I think you're wrong but I'm being sarcastic" },
-            
-            // BOUNDARY SETTING (BUT SOFT)
-            { says: "i wish i could but", means: "I could help but I don't want to" },
-            { says: "i have a prior commitment", means: "I'm making an excuse to avoid this" },
-            { says: "i'm not really in a position to", means: "I have capacity but lack willingness" },
-            { says: "maybe next time", means: "I don't plan on there being a next time" }
-        ];
+        // Initialize Supabase client
+        const supabaseUrl = 'https://jucinztbhrypeuewpswr.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1Y2luenRiaHJ5cGV1ZXdwc3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTcxODgsImV4cCI6MjA3MjEzMzE4OH0.FyTxraNooNkc9fNRK3DicOC6jRB1POHeYVIpxF5SOXE';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-        // Context-specific interpretations
-        const contextualInsights = {
-            "i'm fine": {
-                "spouse-partner": "Usually means they're upset and want you to ask more questions and show you care",
-                "teenager": "Likely upset but don't want to talk to adults about it",
-                "parent": "Could be stressed but don't want to burden you with their problems",
-                "friend": "Usually means they're hurt but don't want to create drama",
-                "work-colleague": "Professional way of saying they're dealing with something but maintaining boundaries",
-                "ex-partner": "Could mean trying to appear unaffected by your presence"
-            },
-            "whatever": {
-                "teenager": "Classic dismissive response when feeling misunderstood or controlled",
-                "spouse-partner": "Sign of frustration and feeling unheard in the relationship",
-                "friend": "Shows frustration - they might need space or feel unheard",
-                "work-colleague": "Unprofessional response showing workplace frustration"
-            },
-            "that's interesting": {
-                "boss": "Likely means they disagree with your idea but are being diplomatic",
-                "work-colleague": "Professional way of saying they have doubts about your proposal",
-                "friend": "Might mean they're skeptical but don't want to hurt feelings",
-                "romantic-interest": "Could mean they're not impressed but trying to be nice"
-            },
-            "no worries": {
-                "work-colleague": "Professional way of saying they're annoyed but maintaining courtesy",
-                "service-worker": "Trained response - might actually be stressed but can't show it",
-                "friend": "Usually genuine, but could mean tired of helping with this issue"
-            },
-            "sounds good": {
-                "boss": "Could be genuine approval or diplomatic agreement with reservations",
-                "spouse-partner": "Might mean going along with your plan but would prefer something else",
-                "teenager": "Often means reluctant compliance - agreeing but not enthusiastic"
-            },
-            "i don't care": {
-                "teenager": "Usually means they care deeply but feel their opinion doesn't matter",
-                "ex-partner": "Defense mechanism - likely still care but protecting themselves",
-                "spouse-partner": "Often means they're hurt and have stopped fighting for what they want"
-            },
-            "we should get coffee sometime": {
-                "work-colleague": "Polite networking phrase - unlikely to result in actual plans",
-                "romantic-interest": "Could be genuine interest or polite rejection depending on other signals",
-                "stranger": "Almost certainly just being polite, not a real invitation"
-            },
-            "i'm busy": {
-                "teenager": "Often means avoiding chores/responsibilities",
-                "spouse-partner": "Could mean overwhelmed and need support, not more requests",
-                "friend": "Might mean going through something and need space"
-            },
-            "good luck with that": {
-                "spouse-partner": "Relationship tension - they disagree but stepping back from arguing",
-                "friend": "Might mean they think you're making a mistake but won't interfere",
-                "work-colleague": "Professional way of expressing skepticism about your project"
+        // Global variables to store database data
+        let phrasesData = [];
+        let isLoading = false;
+
+        // Load phrases from database on page load
+        async function loadPhrasesFromDatabase() {
+            try {
+                isLoading = true;
+                updateLoadingState(true);
+                
+                const { data, error } = await supabase
+                    .from('phrases')
+                    .select(`
+                        id,
+                        phrase_text,
+                        general_meaning,
+                        category,
+                        context_interpretations (
+                            context_type,
+                            interpretation
+                        )
+                    `);
+
+                if (error) throw error;
+                
+                phrasesData = data;
+                console.log('Loaded phrases from database:', phrasesData.length);
+                
+            } catch (error) {
+                console.error('Error loading phrases:', error);
+                showError('Failed to load phrase database. Please try again.');
+            } finally {
+                isLoading = false;
+                updateLoadingState(false);
             }
-        };
+        }
 
-        function decodeMessage() {
+        function updateLoadingState(loading) {
+            const button = document.querySelector('.decode-button');
+            if (loading) {
+                button.textContent = 'Loading...';
+                button.disabled = true;
+            } else {
+                button.textContent = 'Decode Message';
+                button.disabled = false;
+            }
+        }
+
+        function showError(message) {
+            const resultArea = document.getElementById('result-area');
+            const resultText = document.getElementById('result-text');
+            resultText.innerHTML = `<strong style="color: #e74c3c;">Error:</strong> ${message}`;
+            resultArea.classList.add('show');
+        }
+
+        async function decodeMessage() {
             const resultArea = document.getElementById('result-area');
             const resultText = document.getElementById('result-text');
             
@@ -337,23 +259,44 @@
                 resultArea.classList.add('show');
                 return;
             }
+
+            if (isLoading) {
+                resultText.innerHTML = "Please wait, loading phrase database...";
+                resultArea.classList.add('show');
+                return;
+            }
+            
+            // If no data loaded yet, try to load it
+            if (phrasesData.length === 0) {
+                await loadPhrasesFromDatabase();
+                if (phrasesData.length === 0) {
+                    showError('No phrases loaded from database.');
+                    return;
+                }
+            }
             
             // Look for exact matches first, then partial matches
-            let match = translations.find(t => t.says === messageToAnalyze);
+            let match = phrasesData.find(phrase => phrase.phrase_text === messageToAnalyze);
             if (!match) {
-                match = translations.find(t => 
-                    messageToAnalyze.includes(t.says) || 
-                    t.says.includes(messageToAnalyze)
+                match = phrasesData.find(phrase => 
+                    messageToAnalyze.includes(phrase.phrase_text) || 
+                    phrase.phrase_text.includes(messageToAnalyze)
                 );
             }
             
             if (match) {
-                let result = `<strong>General meaning:</strong><br>"${match.means}"`;
+                let result = `<strong>General meaning:</strong><br>"${match.general_meaning}"`;
                 
                 // Add context-specific interpretation if available
-                if (context && contextualInsights[match.says] && contextualInsights[match.says][context]) {
-                    const contextLabel = context.replace('-', ' ');
-                    result += `<br><br><strong>From ${contextLabel}:</strong><br>${contextualInsights[match.says][context]}`;
+                if (context && match.context_interpretations) {
+                    const contextInterpretation = match.context_interpretations.find(
+                        ci => ci.context_type === context
+                    );
+                    
+                    if (contextInterpretation) {
+                        const contextLabel = context.replace('-', ' ');
+                        result += `<br><br><strong>From ${contextLabel}:</strong><br>${contextInterpretation.interpretation}`;
+                    }
                 }
                 
                 resultText.innerHTML = result;
@@ -363,6 +306,9 @@
             
             resultArea.classList.add('show');
         }
+
+        // Load phrases when page loads
+        document.addEventListener('DOMContentLoaded', loadPhrasesFromDatabase);
 
         // Allow Enter key to submit
         document.getElementById('their-message').addEventListener('keypress', function(e) {
