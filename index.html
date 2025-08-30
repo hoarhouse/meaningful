@@ -35,6 +35,31 @@
             letter-spacing: -0.02em;
         }
 
+        .auth-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .sign-out-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .sign-out-btn:hover {
+            background: #d32f2f;
+        }
+
         .input-group {
             margin-bottom: 24px;
         }
@@ -208,6 +233,11 @@
     </div>
 
     <div class="container">
+        <div class="auth-status" id="auth-status" style="display: none;">
+            <span>✓ Signed in</span>
+            <button class="sign-out-btn" onclick="signOut()">Sign Out</button>
+        </div>
+        
         <h1>Meaningful</h1>
         
         <div class="input-group">
@@ -260,6 +290,7 @@
             
             if (input === SITE_PASSWORD) {
                 document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('auth-status').style.display = 'flex';
                 errorDiv.classList.add('hidden');
                 // Store authentication in session
                 sessionStorage.setItem('authenticated', 'true');
@@ -273,7 +304,17 @@
         function checkAuthentication() {
             if (sessionStorage.getItem('authenticated') === 'true') {
                 document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('auth-status').style.display = 'flex';
             }
+        }
+
+        // Sign out function
+        function signOut() {
+            sessionStorage.removeItem('authenticated');
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('auth-status').style.display = 'none';
+            document.getElementById('password-input').value = '';
+            document.getElementById('login-error').classList.add('hidden');
         }
 
         // Allow Enter key to submit password
