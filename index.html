@@ -1,37 +1,4 @@
-"i'm just being realistic": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional pessimism masking workplace anxiety or fear while claiming objectivity about outcomes.",
-                    "boss": "<br><br><em>From boss:</em> Management negativity masking leadership fears while claiming practical assessment of situations.",
-                    "customer": "<br><br><em>From customer:</em> Customer pessimism masking anxiety about service outcomes while claiming practical expectations.",
-                    "stranger": "<br><br><em>From stranger:</em> Social pessimism masking personal fears while claiming objective assessment of situations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional pessimism masking job anxiety while claiming realistic service expectations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official pessimism masking institutional fears while claiming practical institutional assessment.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating pessimism masking relationship fears while claiming practical relationship expectations.",
-                    "friend": "<br><br><em>From friend:</em> Friendship pessimism masking personal anxieties while claiming objective friendship concern.",
-                    "family": "<br><br><em>From family member:</em> Family pessimism masking emotional fears while claiming practical family wisdom.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship pessimism masking partnership fears while claiming practical relationship assessment.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage pessimism masking adolescent fears while claiming mature realistic perspective.",
-                    "parent": "<br><br><em>From parent:</em> Parental pessimism masking protective fears while claiming life experience and practical wisdom.",
-                    "child": "<br><br><em>From child:</em> Child copying adult pessimistic language while potentially not understanding the fear-masking function.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship pessimism masking emotional hurt while claiming objective assessment of your prospects.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community pessimism masking personal anxieties while claiming practical neighborhood assessment.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital pessimism that's easier to express through text while claiming objectivity.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public pessimism masking personal fears while appearing to offer practical group wisdom."
-                },
-                "i don't have time for drama": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional boundary claiming superiority while actually being affected by workplace conflicts or politics.",
-                    "boss": "<br><br><em>From boss:</em> Management boundary claiming authority while actually being impacted by organizational drama or interpersonal issues.",
-                    "customer": "<br><br><em>From customer:</em> Customer boundary claiming efficiency while actually being frustrated by service complications or interpersonal dynamics.",
-                    "stranger": "<br><br><em>From stranger:</em> Social boundary claiming detachment while actually being affected by social conflicts or tensions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional boundary claiming work focus while actually being impacted by customer or workplace drama.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official boundary claiming institutional focus while actually being affected by political or interpersonal conflicts.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating boundary claiming emotional maturity while actually being affected by relationship conflicts or complications.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary claiming emotional health while actually being impacted by social drama or friendship conflicts.",
-                    "family": "<br><br><em>From family member:</em> Family boundary claiming maturity while actually being affected by family drama or interpersonal tensions.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship boundary claiming emotional stability while actually being impacted by partnership conflicts or family drama.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage boundary claiming maturity while actually being deeply affected by social or family drama.",
-                    "parent": "<br><br><em>From parent:</em> Parental boundary claiming focus while actually being impacted by family drama or interpersonal conflicts.",
-                    "child": "<br><br><em>From child:</em> Child copying adult boundary language while potentially not understanding the emotional protection function.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship boundary claiming emotional freedom while actually being affected by relationship drama or complications<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,41 +33,6 @@
             text-align: center;
             margin-bottom: 40px;
             letter-spacing: -0.02em;
-        }
-
-        .toggle-container {
-            background-color: #f5f5f7;
-            border-radius: 12px;
-            padding: 4px;
-            margin-bottom: 30px;
-            display: flex;
-        }
-
-        .toggle-button {
-            flex: 1;
-            padding: 12px 24px;
-            background: none;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            color: #86868b;
-        }
-
-        .toggle-button.active {
-            background-color: #ffffff;
-            color: #1d1d1f;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-section {
-            display: none;
-        }
-
-        .form-section.active {
-            display: block;
         }
 
         .input-group {
@@ -214,1234 +146,231 @@
     <div class="container">
         <h1>Meaningful</h1>
         
-        <!-- Toggle Buttons -->
-        <div class="toggle-container">
-            <button class="toggle-button active" onclick="showMode('conversation')">
-                Full Conversation
-            </button>
-            <button class="toggle-button" onclick="showMode('decode')">
-                Quick Decode
-            </button>
+        <div class="input-group">
+            <label for="their-message">What they said:</label>
+            <textarea id="their-message" placeholder="Enter what they said to you..."></textarea>
+        </div>
+        
+        <div class="input-group">
+            <label for="context">Who said it:</label>
+            <select id="context">
+                <option value="">Select who said it</option>
+                <option value="spouse-partner">Spouse/Partner</option>
+                <option value="romantic-interest">Romantic Interest</option>
+                <option value="ex-partner">Ex-Partner</option>
+                <option value="friend">Friend</option>
+                <option value="family">Family Member</option>
+                <option value="parent">Parent</option>
+                <option value="child">Child</option>
+                <option value="teenager">Teenager</option>
+                <option value="boss">Boss/Manager</option>
+                <option value="work-colleague">Work Colleague</option>
+                <option value="customer">Customer/Client</option>
+                <option value="service-worker">Service Worker</option>
+                <option value="authority-figure">Authority Figure</option>
+                <option value="neighbor">Neighbor</option>
+                <option value="stranger">Stranger</option>
+                <option value="online-text">Online/Text</option>
+                <option value="group-setting">Group Setting</option>
+            </select>
         </div>
 
-        <!-- Full Conversation Mode -->
-        <div id="conversation-mode" class="form-section active">
-            <div class="input-group">
-                <label for="what-i-said">What I said:</label>
-                <textarea id="what-i-said" placeholder="Enter what you said to them..."></textarea>
-            </div>
-            
-            <div class="input-group">
-                <label for="what-they-said">What they said back:</label>
-                <textarea id="what-they-said" placeholder="Enter their response..."></textarea>
-            </div>
-            
-            <div class="input-group">
-                <label for="conversation-context">Context:</label>
-                <select id="conversation-context">
-                    <option value="">Select context (optional)</option>
-                    <option value="work-colleague">Work colleague</option>
-                    <option value="boss">Boss/Manager</option>
-                    <option value="family">Family member</option>
-                    <option value="friend">Friend</option>
-                    <option value="spouse-partner">Spouse/Partner</option>
-                    <option value="customer">Customer/Client</option>
-                    <option value="stranger">Stranger</option>
-                    <option value="teenager">Teenager/Young Adult</option>
-                    <option value="parent">Parent</option>
-                    <option value="child">Child</option>
-                    <option value="ex-partner">Ex-Partner</option>
-                    <option value="neighbor">Neighbor</option>
-                    <option value="service-worker">Service Worker</option>
-                    <option value="authority-figure">Authority Figure</option>
-                    <option value="online-text">Online/Text Message</option>
-                    <option value="group-setting">Group Setting</option>
-                    <option value="romantic-interest">Romantic Interest</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Quick Decode Mode -->
-        <div id="decode-mode" class="form-section">
-            <div class="input-group">
-                <label for="their-message">What they said:</label>
-                <textarea id="their-message" placeholder="Paste or type what they said..."></textarea>
-            </div>
-            
-            <div class="input-group">
-                <label for="decode-context">Context:</label>
-                <select id="decode-context">
-                    <option value="">Select context (optional)</option>
-                    <option value="work-colleague">Work colleague</option>
-                    <option value="boss">Boss/Manager</option>
-                    <option value="family">Family member</option>
-                    <option value="friend">Friend</option>
-                    <option value="spouse-partner">Spouse/Partner</option>
-                    <option value="customer">Customer/Client</option>
-                    <option value="stranger">Stranger</option>
-                    <option value="teenager">Teenager/Young Adult</option>
-                    <option value="parent">Parent</option>
-                    <option value="child">Child</option>
-                    <option value="ex-partner">Ex-Partner</option>
-                    <option value="neighbor">Neighbor</option>
-                    <option value="service-worker">Service Worker</option>
-                    <option value="authority-figure">Authority Figure</option>
-                    <option value="online-text">Online/Text Message</option>
-                    <option value="group-setting">Group Setting</option>
-                    <option value="romantic-interest">Romantic Interest</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Decode Button -->
         <button class="decode-button" onclick="decodeMessage()">
             Decode Message
         </button>
 
-        <!-- Result Area -->
         <div id="result-area" class="result-area">
-            <div class="result-title">Decoded Message:</div>
+            <div class="result-title">Translation:</div>
             <div id="result-text" class="result-text"></div>
         </div>
     </div>
 
     <script>
-        // Database of common translations - organized by category
+        // Comprehensive phrase database with meanings
         const translations = [
-            // RELATIONSHIP/PERSONAL (12 examples)
-            { says: "i'm fine", means: "I'm upset but don't want to discuss it", category: "relationship" },
-            { says: "i don't care", means: "I care a lot but I'm protecting myself", category: "relationship" },
-            { says: "i'm just tired", means: "Something is bothering me but I don't want to explain", category: "relationship" },
-            { says: "it's not a big deal", means: "This is actually important to me", category: "relationship" },
-            { says: "nothing's wrong", means: "Something is definitely wrong but I want you to figure it out", category: "relationship" },
-            { says: "do whatever you want", means: "I have strong feelings about this but I'm testing you", category: "relationship" },
-            { says: "i'm not mad", means: "I'm actually very upset", category: "relationship" },
-            { says: "forget about it", means: "I don't want to forget about it, I want you to make it right", category: "relationship" },
-            { says: "you wouldn't understand", means: "I want to talk but I feel like you don't listen to me", category: "relationship" },
-            { says: "it doesn't matter", means: "It matters a lot to me but I'm giving up", category: "relationship" },
-            { says: "i'm used to it", means: "This hurts me but I've accepted that you won't change", category: "relationship" },
-            { says: "never mind", means: "I wanted to share something but now I feel dismissed", category: "relationship" },
+            // CLASSIC DEFLECTION PHRASES
+            { says: "i'm fine", means: "I'm upset but don't want to discuss it or I want you to ask more questions" },
+            { says: "nothing's wrong", means: "Something is definitely wrong but I want you to figure it out" },
+            { says: "i don't care", means: "I care deeply but I'm protecting myself from disappointment" },
+            { says: "whatever", means: "I'm frustrated and giving up on this conversation" },
+            { says: "it doesn't matter", means: "It matters a lot to me but I'm giving up trying to make you understand" },
+            { says: "forget about it", means: "I don't want to forget - I want you to make it right" },
+            { says: "never mind", means: "I wanted to share something but now I feel dismissed" },
             
-            // WORKPLACE/PROFESSIONAL (12 examples)
-            { says: "that's interesting", means: "I disagree but I'm being polite", category: "workplace" },
-            { says: "no worries", means: "I'm actually annoyed but trying to be professional", category: "workplace" },
-            { says: "sure, no problem", means: "I'm agreeing but I'm not happy about it", category: "workplace" },
-            { says: "sounds good", means: "I'm agreeing but I might not be enthusiastic about it", category: "workplace" },
-            { says: "let's circle back on this", means: "I don't want to deal with this right now", category: "workplace" },
-            { says: "i'll take that into consideration", means: "I've already decided but I'm being polite", category: "workplace" },
-            { says: "that's above my pay grade", means: "I don't want to take responsibility for this decision", category: "workplace" },
-            { says: "let's take this offline", means: "This conversation is getting uncomfortable or inappropriate for this setting", category: "workplace" },
-            { says: "i'll look into it", means: "I probably won't prioritize this unless you follow up", category: "workplace" },
-            { says: "we should sync up soon", means: "I'm avoiding giving you a definitive answer right now", category: "workplace" },
-            { says: "i don't have bandwidth for that", means: "This isn't a priority for me but I don't want to say no directly", category: "workplace" },
-            { says: "thanks for flagging that", means: "I'm acknowledging your concern but may not act on it", category: "workplace" },
+            // PASSIVE AGGRESSIVE RESPONSES  
+            { says: "if you say so", means: "I think you're wrong but I don't want to argue" },
+            { says: "sure thing", means: "I'm agreeing but I'm irritated about it" },
+            { says: "no big deal", means: "This is actually a big deal but I'm being sarcastic" },
+            { says: "you're probably right", means: "I think you're wrong but I'm done fighting" },
+            { says: "that's one way to do it", means: "I think your way is wrong or inefficient" },
+            { says: "interesting choice", means: "I think you made a bad decision" },
+            { says: "good for you", means: "I'm not impressed and might be jealous" },
+            { says: "good luck with that", means: "I think you're making a mistake" },
+            { says: "you do you", means: "I disagree with your choice but I'm done trying to help" },
             
-            // POLITE REJECTION (11 examples)
-            { says: "we should get coffee sometime", means: "I'm just being nice, not making real plans", category: "polite-rejection" },
-            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict", category: "polite-rejection" },
-            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you", category: "polite-rejection" },
-            { says: "i'll think about it", means: "I'm not interested but I don't want to hurt your feelings", category: "polite-rejection" },
-            { says: "let me check my schedule", means: "I don't want to commit but I'm buying time", category: "polite-rejection" },
-            { says: "i'll get back to you", means: "I'm hoping you'll forget about this request", category: "polite-rejection" },
-            { says: "we'll see", means: "Probably not, but I don't want to say no directly", category: "polite-rejection" },
-            { says: "that sounds nice but", means: "I'm about to give you an excuse to avoid this", category: "polite-rejection" },
-            { says: "i wish i could help", means: "I could help but I don't want to", category: "polite-rejection" },
-            { says: "maybe some other time", means: "I don't want to do this now or ever", category: "polite-rejection" },
-            { says: "i'll keep that in mind", means: "I'm dismissing your suggestion politely", category: "polite-rejection" },
+            // POLITE REJECTION
+            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict" },
+            { says: "we should get coffee sometime", means: "I'm just being polite, not making real plans" },
+            { says: "i'll think about it", means: "I'm not interested but don't want to hurt your feelings" },
+            { says: "let me check my schedule", means: "I don't want to commit but I'm buying time" },
+            { says: "i'll get back to you", means: "I'm hoping you'll forget about this request" },
+            { says: "we'll see", means: "Probably not, but I don't want to say no directly" },
+            { says: "maybe some other time", means: "I don't want to do this now or ever" },
+            { says: "rain check", means: "I'm postponing this indefinitely" },
             
-            // EMOTIONAL DEFLECTION (10 examples)
-            { says: "it's up to you", means: "I have a preference but I don't want to say it directly", category: "emotional-deflection" },
-            { says: "that's nice", means: "I'm not impressed but I'm being polite", category: "emotional-deflection" },
-            { says: "i don't want to talk about it", means: "I need to talk but I'm scared of being vulnerable", category: "emotional-deflection" },
-            { says: "it's complicated", means: "I have feelings about this but I don't know how to express them", category: "emotional-deflection" },
-            { says: "i'm over it", means: "I'm definitely not over it but I want to appear strong", category: "emotional-deflection" },
-            { says: "it is what it is", means: "I'm hurt but I'm trying to accept something I can't change", category: "emotional-deflection" },
-            { says: "i don't know", means: "I do know but I'm afraid of the consequences of saying it", category: "emotional-deflection" },
-            { says: "whatever happens happens", means: "I'm scared of the outcome but trying to seem indifferent", category: "emotional-deflection" },
-            { says: "i'm just focusing on myself", means: "I'm hurt by someone but don't want to seem needy", category: "emotional-deflection" },
-            { says: "i don't really care either way", means: "I care deeply but I'm protecting myself from disappointment", category: "emotional-deflection" },
+            // WORKPLACE DIPLOMACY
+            { says: "that's interesting", means: "I disagree but I'm being polite" },
+            { says: "no worries", means: "I'm actually annoyed but trying to be professional" },
+            { says: "sounds good", means: "I'm agreeing but might not be enthusiastic" },
+            { says: "let's circle back on this", means: "I don't want to deal with this right now" },
+            { says: "i'll take that into consideration", means: "I've already decided but I'm being polite" },
+            { says: "let's take this offline", means: "This conversation is getting uncomfortable" },
+            { says: "i'll look into it", means: "I probably won't prioritize this unless you follow up" },
+            { says: "thanks for flagging that", means: "I'm acknowledging your concern but may not act on it" },
             
-            // PASSIVE AGGRESSIVE (21 examples)
-            { says: "whatever", means: "I'm frustrated and giving up on this conversation", category: "passive-aggressive" },
-            { says: "if you say so", means: "I think you're wrong but I don't want to argue", category: "passive-aggressive" },
-            { says: "thanks for letting me know", means: "I'm annoyed you didn't tell me this sooner", category: "passive-aggressive" },
-            { says: "sure thing", means: "I'm agreeing but I'm irritated about it", category: "passive-aggressive" },
-            { says: "no big deal", means: "This is actually a big deal but I'm being sarcastic", category: "passive-aggressive" },
-            { says: "i guess that works", means: "I don't think it works but I'm done fighting", category: "passive-aggressive" },
-            { says: "you're probably right", means: "I think you're wrong but I don't want to argue anymore", category: "passive-aggressive" },
-            { says: "that's one way to do it", means: "I think your way is wrong or inefficient", category: "passive-aggressive" },
-            { says: "interesting choice", means: "I think you made a bad decision", category: "passive-aggressive" },
-            { says: "good for you", means: "I'm not impressed and might be a little jealous or annoyed", category: "passive-aggressive" },
-            { says: "good luck with that", means: "I think you're making a mistake but won't stop you", category: "passive-aggressive" },
+            // EMOTIONAL AVOIDANCE
+            { says: "it's up to you", means: "I have a preference but don't want to say it directly" },
+            { says: "that's nice", means: "I'm not impressed but I'm being polite" },
+            { says: "i don't want to talk about it", means: "I need to talk but I'm scared of being vulnerable" },
+            { says: "it's complicated", means: "I have feelings but don't know how to express them" },
+            { says: "i'm over it", means: "I'm definitely not over it but want to appear strong" },
+            { says: "it is what it is", means: "I'm hurt but trying to accept something I can't change" },
+            { says: "i don't know", means: "I do know but I'm afraid of the consequences" },
             
-            // POLITE REJECTION (12 examples)
-            { says: "we should get coffee sometime", means: "I'm just being nice, not making real plans", category: "polite-rejection" },
-            { says: "maybe later", means: "I don't want to do this but I'm avoiding conflict", category: "polite-rejection" },
-            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you", category: "polite-rejection" },
-            { says: "i'll think about it", means: "I'm not interested but don't want to hurt your feelings", category: "polite-rejection" },
-            { says: "let me check my schedule", means: "I don't want to commit but I'm buying time", category: "polite-rejection" },
-            { says: "i'll get back to you", means: "I'm hoping you'll forget about this request", category: "polite-rejection" },
-            { says: "we'll see", means: "Probably not, but I don't want to say no directly", category: "polite-rejection" },
-            { says: "that sounds nice but", means: "I'm about to give you an excuse to avoid this", category: "polite-rejection" },
-            { says: "i wish i could help", means: "I could help but I don't want to", category: "polite-rejection" },
-            { says: "maybe some other time", means: "I don't want to do this now or ever", category: "polite-rejection" },
-            { says: "i'll keep that in mind", means: "I'm dismissing your suggestion politely", category: "polite-rejection" },
+            // STRESS & OVERWHELM
+            { says: "i'm busy", means: "I don't want to talk right now or I'm avoiding you" },
+            { says: "i'm tired", means: "Something is bothering me but I don't want to explain" },
+            { says: "i can handle it", means: "I'm struggling but don't want to appear weak" },
+            { says: "don't worry about me", means: "I need help but don't want to burden you" },
+            { says: "i'm fine on my own", means: "I'm hurt but trying to appear independent" },
             
-            // EMOTIONAL DEFLECTION (12 examples)
-            { says: "it's up to you", means: "I have a preference but I don't want to say it directly", category: "emotional-deflection" },
-            { says: "that's nice", means: "I'm not impressed but I'm being polite", category: "emotional-deflection" },
-            { says: "i don't want to talk about it", means: "I need to talk but I'm scared of being vulnerable", category: "emotional-deflection" },
-            { says: "it's complicated", means: "I have feelings about this but I don't know how to express them", category: "emotional-deflection" },
-            { says: "i'm over it", means: "I'm definitely not over it but I want to appear strong", category: "emotional-deflection" },
-            { says: "it is what it is", means: "I'm hurt but I'm trying to accept something I can't change", category: "emotional-deflection" },
-            { says: "i don't know", means: "I do know but I'm afraid of the consequences of saying it", category: "emotional-deflection" },
-            { says: "whatever happens happens", means: "I'm scared of the outcome but trying to seem indifferent", category: "emotional-deflection" },
-            { says: "i'm just focusing on myself", means: "I'm hurt by someone but don't want to seem needy", category: "emotional-deflection" },
-            { says: "i don't really care either way", means: "I care deeply but I'm protecting myself from disappointment", category: "emotional-deflection" },
-            { says: "i'm not mad", means: "I'm actually very upset right now", category: "emotional-deflection" },
-            { says: "it doesn't matter", means: "It matters a lot to me but I'm giving up", category: "emotional-deflection" },
+            // RELATIONSHIP SPECIFIC
+            { says: "do whatever you want", means: "I have strong feelings about this but I'm testing you" },
+            { says: "i'm not mad", means: "I'm actually very upset right now" },
+            { says: "you wouldn't understand", means: "I want to talk but feel like you don't listen" },
+            { says: "i'm used to it", means: "This hurts but I've accepted you won't change" },
             
-            // WORKPLACE/PROFESSIONAL (13 examples)
-            { says: "that's interesting", means: "I disagree but I'm being polite", category: "workplace" },
-            { says: "no worries", means: "I'm actually annoyed but trying to be professional", category: "workplace" },
-            { says: "sure, no problem", means: "I'm agreeing but I'm not happy about it", category: "workplace" },
-            { says: "sounds good", means: "I'm agreeing but I might not be enthusiastic about it", category: "workplace" },
-            { says: "let's circle back on this", means: "I don't want to deal with this right now", category: "workplace" },
-            { says: "i'll take that into consideration", means: "I've already decided but I'm being polite", category: "workplace" },
-            { says: "that's above my pay grade", means: "I don't want to take responsibility for this decision", category: "workplace" },
-            { says: "let's take this offline", means: "This conversation is getting uncomfortable or inappropriate for this setting", category: "workplace" },
-            { says: "i'll look into it", means: "I probably won't prioritize this unless you follow up", category: "workplace" },
-            { says: "we should sync up soon", means: "I'm avoiding giving you a definitive answer right now", category: "workplace" },
-            { says: "i don't have bandwidth for that", means: "This isn't a priority for me but I don't want to say no directly", category: "workplace" },
-            { says: "thanks for flagging that", means: "I'm acknowledging your concern but may not act on it", category: "workplace" },
+            // PROFESSIONAL STALLING
+            { says: "i don't have bandwidth for that", means: "This isn't a priority but I don't want to say no directly" },
+            { says: "that's above my pay grade", means: "I don't want responsibility for this decision" },
+            { says: "we should sync up soon", means: "I'm avoiding giving you a definitive answer" },
+            { says: "let me run it by my team", means: "I'm stalling or don't want to take personal responsibility" },
+            { says: "that's not really my area", means: "I don't want to handle this" },
             
-            // RELUCTANT AGREEMENT (3 examples)
-            { says: "sure, why not", means: "I'm not enthusiastic but I'll go along with it", category: "reluctant-agreement" },
-            { says: "i guess", means: "I'm not confident about this or I'm being passive-aggressive", category: "reluctant-agreement" },
-            { says: "you do you", means: "I disagree with your choice but I'm done trying to help", category: "reluctant-agreement" }
+            // DISMISSIVE RESPONSES
+            { says: "if you insist", means: "I disagree but I'm reluctantly complying" },
+            { says: "suit yourself", means: "I think you're making a mistake but I'm done caring" },
+            { says: "that's your choice", means: "I disagree with your decision but won't stop you" },
+            { says: "must be nice", means: "I'm jealous or resentful about your situation" },
+            { says: "i'm sure you know best", means: "I think you're wrong but I'm being sarcastic" },
+            
+            // BOUNDARY SETTING (BUT SOFT)
+            { says: "i wish i could but", means: "I could help but I don't want to" },
+            { says: "i have a prior commitment", means: "I'm making an excuse to avoid this" },
+            { says: "i'm not really in a position to", means: "I have capacity but lack willingness" },
+            { says: "maybe next time", means: "I don't plan on there being a next time" }
         ];
 
-        function showMode(mode) {
-            // Update toggle buttons
-            document.querySelectorAll('.toggle-button').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-
-            // Show/hide form sections
-            document.querySelectorAll('.form-section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            if (mode === 'conversation') {
-                document.getElementById('conversation-mode').classList.add('active');
-            } else {
-                document.getElementById('decode-mode').classList.add('active');
+        // Context-specific interpretations
+        const contextualInsights = {
+            "i'm fine": {
+                "spouse-partner": "Usually means they're upset and want you to ask more questions and show you care",
+                "teenager": "Likely upset but don't want to talk to adults about it",
+                "parent": "Could be stressed but don't want to burden you with their problems",
+                "friend": "Usually means they're hurt but don't want to create drama",
+                "work-colleague": "Professional way of saying they're dealing with something but maintaining boundaries",
+                "ex-partner": "Could mean trying to appear unaffected by your presence"
+            },
+            "whatever": {
+                "teenager": "Classic dismissive response when feeling misunderstood or controlled",
+                "spouse-partner": "Sign of frustration and feeling unheard in the relationship",
+                "friend": "Shows frustration - they might need space or feel unheard",
+                "work-colleague": "Unprofessional response showing workplace frustration"
+            },
+            "that's interesting": {
+                "boss": "Likely means they disagree with your idea but are being diplomatic",
+                "work-colleague": "Professional way of saying they have doubts about your proposal",
+                "friend": "Might mean they're skeptical but don't want to hurt feelings",
+                "romantic-interest": "Could mean they're not impressed but trying to be nice"
+            },
+            "no worries": {
+                "work-colleague": "Professional way of saying they're annoyed but maintaining courtesy",
+                "service-worker": "Trained response - might actually be stressed but can't show it",
+                "friend": "Usually genuine, but could mean tired of helping with this issue"
+            },
+            "sounds good": {
+                "boss": "Could be genuine approval or diplomatic agreement with reservations",
+                "spouse-partner": "Might mean going along with your plan but would prefer something else",
+                "teenager": "Often means reluctant compliance - agreeing but not enthusiastic"
+            },
+            "i don't care": {
+                "teenager": "Usually means they care deeply but feel their opinion doesn't matter",
+                "ex-partner": "Defense mechanism - likely still care but protecting themselves",
+                "spouse-partner": "Often means they're hurt and have stopped fighting for what they want"
+            },
+            "we should get coffee sometime": {
+                "work-colleague": "Polite networking phrase - unlikely to result in actual plans",
+                "romantic-interest": "Could be genuine interest or polite rejection depending on other signals",
+                "stranger": "Almost certainly just being polite, not a real invitation"
+            },
+            "i'm busy": {
+                "teenager": "Often means avoiding chores/responsibilities",
+                "spouse-partner": "Could mean overwhelmed and need support, not more requests",
+                "friend": "Might mean going through something and need space"
+            },
+            "good luck with that": {
+                "spouse-partner": "Relationship tension - they disagree but stepping back from arguing",
+                "friend": "Might mean they think you're making a mistake but won't interfere",
+                "work-colleague": "Professional way of expressing skepticism about your project"
             }
-        }
+        };
 
         function decodeMessage() {
             const resultArea = document.getElementById('result-area');
             const resultText = document.getElementById('result-text');
             
-            // Get the active mode
-            const conversationMode = document.getElementById('conversation-mode').classList.contains('active');
+            const messageToAnalyze = document.getElementById('their-message').value.trim().toLowerCase();
+            const context = document.getElementById('context').value;
             
-            let messageToAnalyze = '';
-            let context = '';
-            
-            if (conversationMode) {
-                const whatISaid = document.getElementById('what-i-said').value.trim();
-                const whatTheySaid = document.getElementById('what-they-said').value.trim();
-                context = document.getElementById('conversation-context').value;
-                
-                if (!whatTheySaid) {
-                    resultText.innerHTML = "Please enter what they said back to you.";
-                    resultArea.classList.add('show');
-                    return;
-                }
-                
-                messageToAnalyze = whatTheySaid.toLowerCase();
-                
-                // Show conversation context in result
-                if (whatISaid) {
-                    resultText.innerHTML = `<strong>Context:</strong> You said: "${whatISaid}"<br><br>`;
-                }
-            } else {
-                messageToAnalyze = document.getElementById('their-message').value.trim().toLowerCase();
-                context = document.getElementById('decode-context').value;
-                
-                if (!messageToAnalyze) {
-                    resultText.innerHTML = "Please enter a message to decode.";
-                    resultArea.classList.add('show');
-                    return;
-                }
+            if (!messageToAnalyze) {
+                resultText.innerHTML = "Please enter what they said.";
+                resultArea.classList.add('show');
+                return;
             }
             
-            // Look for matches in our translation database
-            const match = translations.find(t => 
-                messageToAnalyze.includes(t.says) || 
-                t.says.includes(messageToAnalyze)
-            );
+            // Look for exact matches first, then partial matches
+            let match = translations.find(t => t.says === messageToAnalyze);
+            if (!match) {
+                match = translations.find(t => 
+                    messageToAnalyze.includes(t.says) || 
+                    t.says.includes(messageToAnalyze)
+                );
+            }
             
             if (match) {
-                let contextualMeaning = match.means;
+                let result = `<strong>General meaning:</strong><br>"${match.means}"`;
                 
-                // Add context-specific interpretations
-                if (context) {
-                    contextualMeaning += getContextualInsight(match.says, context);
+                // Add context-specific interpretation if available
+                if (context && contextualInsights[match.says] && contextualInsights[match.says][context]) {
+                    const contextLabel = context.replace('-', ' ');
+                    result += `<br><br><strong>From ${contextLabel}:</strong><br>${contextualInsights[match.says][context]}`;
                 }
                 
-                const contextInfo = context ? ` (${context.replace('-', ' ')})` : '';
-                resultText.innerHTML += `<strong>Possible translation:</strong><br>"${contextualMeaning}"${contextInfo}`;
+                resultText.innerHTML = result;
             } else {
-                resultText.innerHTML += `<strong>No direct translation found.</strong><br>This might be straightforward, or it could be context-specific. Consider the relationship and situation for hidden meanings.`;
+                resultText.innerHTML = `<strong>No direct translation found.</strong><br>This might be straightforward, or it could be context-specific. Consider the relationship and situation for potential hidden meanings.`;
             }
             
             resultArea.classList.add('show');
         }
 
-        function getContextualInsight(phrase, context) {
-            const contextInsights = {
-                "i'm fine": {
-                    "teenager": "<br><br><em>From a teenager:</em> Likely means they're upset but don't want to talk to an adult about it.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Usually means they want you to ask more questions and show you care.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Could mean they're trying to appear unaffected by your presence/communication.",
-                    "child": "<br><br><em>From a child:</em> Might mean they're sad or in trouble but afraid of getting in more trouble.",
-                    "parent": "<br><br><em>From parent:</em> Could mean they're stressed but don't want to burden you with their problems.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of saying they're dealing with something but maintaining work boundaries.",
-                    "boss": "<br><br><em>From boss:</em> Might mean they're stressed about work issues but don't want to appear weak or overwhelmed.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Could mean they're frustrated with a situation but must remain professional.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Often means they're upset about the relationship but testing if you'll pursue the topic.",
-                    "friend": "<br><br><em>From friend:</em> Usually means they're hurt but don't want to burden you or create drama.",
-                    "family": "<br><br><em>From family member:</em> Could mean they're dealing with personal issues but don't want family drama.",
-                    "customer": "<br><br><em>From customer:</em> Might mean they're frustrated with your service but being polite.",
-                    "stranger": "<br><br><em>From stranger:</em> Usually genuine - they don't know you well enough for hidden meanings.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Could mean they're dealing with neighborhood issues but want to keep things civil.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional response hiding potential frustration with difficult customers.",
-                    "online-text": "<br><br><em>Via text/online:</em> Hard to read tone - could be genuine or passive-aggressive depending on context.",
-                    "group-setting": "<br><br><em>In group setting:</em> Might be avoiding personal discussion in front of others."
-                },
-                "that's interesting": {
-                    "boss": "<br><br><em>From boss:</em> Likely means they disagree with your idea but are being diplomatic.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could mean they're not impressed but trying to be nice on a date.",
-                    "parent": "<br><br><em>From parent:</em> Usually means they think your choice is questionable but don't want to lecture.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of saying they have doubts about your proposal.",
-                    "friend": "<br><br><em>From friend:</em> Might mean they're skeptical but don't want to hurt your feelings directly.",
-                    "teenager": "<br><br><em>From teenager:</em> Often sarcastic - they likely think your idea is boring or uncool.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Could mean they disagree with your plan but don't want to start an argument.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Likely being polite while privately judging your choices.",
-                    "child": "<br><br><em>From child:</em> Might genuinely find it interesting or be mimicking adult responses.",
-                    "family": "<br><br><em>From family member:</em> Could mean they have concerns but are trying to be supportive.",
-                    "customer": "<br><br><em>From customer:</em> Polite way of expressing doubt about your recommendation.",
-                    "stranger": "<br><br><em>From stranger:</em> Usually polite conversation filler - not deeply engaged.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Diplomatic response to neighborhood news they might have opinions about.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional politeness while potentially disagreeing with customer requests.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Measured response while evaluating the merit of your statement.",
-                    "online-text": "<br><br><em>Via text/online:</em> Often more dismissive than it sounds - lack of tone makes it seem neutral.",
-                    "group-setting": "<br><br><em>In group setting:</em> Diplomatic response to avoid conflict in front of others."
-                },
-                "whatever": {
-                    "teenager": "<br><br><em>From teenager:</em> Classic dismissive response when they feel misunderstood or controlled.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Sign they're frustrated and feeling unheard in the relationship.",
-                    "online-text": "<br><br><em>Via text:</em> Often more harsh than intended - tone is hard to convey in text.",
-                    "child": "<br><br><em>From child:</em> Usually means they're giving up on trying to explain their side.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Could indicate they're done engaging in conflict with you.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Unprofessional response showing they're frustrated with work decisions.",
-                    "boss": "<br><br><em>From boss:</em> Concerning sign - they might be overwhelmed or losing patience with the situation.",
-                    "parent": "<br><br><em>From parent:</em> Could mean they're tired of arguing and giving up on convincing you.",
-                    "friend": "<br><br><em>From friend:</em> Shows frustration - they might need space or feel unheard.",
-                    "family": "<br><br><em>From family member:</em> Sign of frustration with family dynamics or decisions.",
-                    "customer": "<br><br><em>From customer:</em> Shows they're unhappy with service but giving up on getting resolution.",
-                    "stranger": "<br><br><em>From stranger:</em> Unusual from strangers - might indicate they're having a bad day.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Could signal frustration with neighborhood issues or your requests.",
-                    "service-worker": "<br><br><em>From service worker:</em> Unprofessional response showing they're overwhelmed or frustrated.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Concerning - might indicate they're losing patience with the situation.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Red flag for relationship - shows they're shutting down communication.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public display of frustration - might be trying to get group sympathy."
-                },
-                "no worries": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of saying they're annoyed but maintaining workplace courtesy.",
-                    "service-worker": "<br><br><em>From service worker:</em> Trained response - they might actually be stressed but can't show it.",
-                    "friend": "<br><br><em>From friend:</em> Usually genuine, but could mean they're tired of helping with this issue.",
-                    "boss": "<br><br><em>From boss:</em> Might mean they're noting your mistake but choosing not to make it a big deal right now.",
-                    "teenager": "<br><br><em>From teenager:</em> Could be genuine or passive-aggressive depending on the situation.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Might be genuine forgiveness or suppressed frustration.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Likely trying to maintain civility while potentially still harboring feelings.",
-                    "child": "<br><br><em>From child:</em> Usually genuine - children typically mean what they say with this phrase.",
-                    "parent": "<br><br><em>From parent:</em> Could be genuine understanding or patient tolerance of repeated issues.",
-                    "family": "<br><br><em>From family member:</em> Might be keeping peace within the family despite some annoyance.",
-                    "customer": "<br><br><em>From customer:</em> Could be genuine or polite response while internally frustrated.",
-                    "stranger": "<br><br><em>From stranger:</em> Usually genuine politeness from someone with no emotional investment.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Diplomatic response to maintain good neighborhood relations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Professional response that might mask their true assessment of the situation.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could be genuine understanding or polite response to avoid conflict early in dating.",
-                    "online-text": "<br><br><em>Via text/online:</em> Often genuine but lacks emotional nuance that voice tone would provide.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public display of being easygoing - might be different privately."
-                },
-                "we should get coffee sometime": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Polite networking phrase - unlikely to result in actual plans.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could be genuine interest or polite rejection depending on their other signals.",
-                    "stranger": "<br><br><em>From stranger:</em> Almost certainly just being polite, not a real invitation.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Friendly but vague - they're being neighborly without real commitment.",
-                    "boss": "<br><br><em>From boss:</em> Professional networking gesture - may or may not lead to actual meeting.",
-                    "teenager": "<br><br><em>From teenager:</em> Unusual phrase for teens - might be copying adult speech patterns.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Odd phrasing for partners - might indicate relationship distance.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Attempt to maintain friendly contact - proceed with caution about motives.",
-                    "child": "<br><br><em>From child:</em> Cute mimicking of adult social interactions - probably genuine interest.",
-                    "parent": "<br><br><em>From parent:</em> Might be trying to schedule quality time in a casual way.",
-                    "family": "<br><br><em>From family member:</em> Could be attempt to reconnect or maintain family relationships.",
-                    "customer": "<br><br><em>From customer:</em> Unusual - might be attempting to build personal relationship for business reasons.",
-                    "service-worker": "<br><br><em>From service worker:</em> Crossing professional boundaries - could be genuine or networking attempt.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Unusual - might be attempt to build rapport or discuss something unofficially.",
-                    "friend": "<br><br><em>From friend:</em> Could be genuine desire to reconnect or vague way to avoid committing to specific plans.",
-                    "online-text": "<br><br><em>Via text/online:</em> Easy to say online but harder to follow through - often remains as just text.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public politeness - less likely to be genuine than private invitation."
-                },
-                "i'm busy": {
-                    "teenager": "<br><br><em>From teenager:</em> Often means they don't want to do chores/homework and are avoiding responsibility.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Could mean they feel overwhelmed and need support, not more requests.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of saying your request isn't their priority right now.",
-                    "friend": "<br><br><em>From friend:</em> Might mean they're going through something and need space.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Likely avoiding contact or still processing the relationship end.",
-                    "boss": "<br><br><em>From boss:</em> Could be genuinely swamped or diplomatic way of declining your request.",
-                    "child": "<br><br><em>From child:</em> Usually avoiding chores or responsibilities - rarely genuinely busy.",
-                    "parent": "<br><br><em>From parent:</em> Likely genuinely overwhelmed with responsibilities but might need help.",
-                    "family": "<br><br><em>From family member:</em> Could be avoiding family obligations or genuinely overwhelmed.",
-                    "customer": "<br><br><em>From customer:</em> Might be rushing you or indicating they don't have time for detailed explanations.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite way to avoid interaction - usually genuine boundary setting.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Could be avoiding neighborhood requests or social obligations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Might be genuinely busy or politely declining additional requests.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Usually genuine - they typically have demanding schedules.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could be testing your persistence or genuinely busy - context matters.",
-                    "online-text": "<br><br><em>Via text/online:</em> Easy excuse to give via text - harder to verify than in-person claims.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public excuse that might be face-saving rather than literal truth."
-                },
-                "sounds good": {
-                    "boss": "<br><br><em>From boss:</em> Could be genuine approval or diplomatic agreement when they have reservations.",
-                    "teenager": "<br><br><em>From teenager:</em> Often means reluctant compliance - they're agreeing but not enthusiastic.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Might mean they're going along with your plan but would prefer something else.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional agreement that might lack personal enthusiasm.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Neutral response trying to avoid conflict while maintaining distance.",
-                    "child": "<br><br><em>From child:</em> Usually genuine agreement - children tend to be more direct.",
-                    "parent": "<br><br><em>From parent:</em> Could be supportive agreement or resigned acceptance of your decision.",
-                    "family": "<br><br><em>From family member:</em> Might be keeping family peace rather than expressing true feelings.",
-                    "customer": "<br><br><em>From customer:</em> Usually genuine satisfaction with your proposal or service.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite agreement without strong personal investment.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Diplomatic agreement to maintain good neighborhood relations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional agreement - they're trained to be accommodating.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official approval that might mask personal reservations.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could be genuine enthusiasm or polite agreement - other cues matter.",
-                    "friend": "<br><br><em>From friend:</em> Usually genuine agreement, but could be going along to avoid disappointing you.",
-                    "online-text": "<br><br><em>Via text/online:</em> Easy response to give - lacks emotional nuance of verbal agreement.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public agreement that might be different from their private opinion."
-                },
-                "it's up to you": {
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Usually means they have a preference but want you to figure out what they want.",
-                    "teenager": "<br><br><em>From teenager:</em> Could mean they don't want to take responsibility for the decision.",
-                    "parent": "<br><br><em>From parent:</em> Might mean they're trying to let you be independent but have concerns.",
-                    "friend": "<br><br><em>From friend:</em> Could mean they're being supportive but privately have an opinion.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of avoiding responsibility for the decision outcome.",
-                    "boss": "<br><br><em>From boss:</em> Could be delegating decision-making or testing your judgment.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Avoiding involvement in your decisions while maintaining emotional distance.",
-                    "child": "<br><br><em>From child:</em> Unusual phrasing for children - might be copying adult responses.",
-                    "family": "<br><br><em>From family member:</em> Could be avoiding family conflict or genuinely deferring to your choice.",
-                    "customer": "<br><br><em>From customer:</em> Might be indecisive or testing your expertise and recommendations.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite deference since they don't know your preferences.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Diplomatic response to avoid neighborhood conflicts over decisions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional deference to customer preferences.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Could be delegating authority or testing your decision-making skills.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Early dating politeness or testing if you'll take charge of planning.",
-                    "online-text": "<br><br><em>Via text/online:</em> Easy response that avoids making decisions via text communication.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public deference that might mask their private preferences."
-                },
-                "i don't care": {
-                    "teenager": "<br><br><em>From teenager:</em> Usually means they care deeply but feel like their opinion doesn't matter to adults.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Defense mechanism - they likely still care but are protecting themselves.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Often means they're hurt and have stopped fighting for what they want.",
-                    "child": "<br><br><em>From child:</em> Might mean they've been told 'no' so often they've given up asking.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional disengagement - they might care but are avoiding workplace conflict.",
-                    "boss": "<br><br><em>From boss:</em> Concerning response - might indicate they're overwhelmed or disengaging from decisions.",
-                    "parent": "<br><br><em>From parent:</em> Could mean they're respecting your independence or are hurt by repeated rejection of advice.",
-                    "family": "<br><br><em>From family member:</em> Often means they care deeply but are tired of family conflict.",
-                    "customer": "<br><br><em>From customer:</em> Might be frustrated with options or genuinely indifferent to choices offered.",
-                    "stranger": "<br><br><em>From stranger:</em> Usually genuine indifference since they have no emotional investment.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Could be avoiding neighborhood conflicts or genuinely indifferent to community decisions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Unprofessional response that might indicate job dissatisfaction.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Concerning response that might indicate disengagement from their responsibilities.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Red flag - could indicate emotional withdrawal or testing behavior.",
-                    "friend": "<br><br><em>From friend:</em> Might mean they're hurt about something or genuinely trying to be low-maintenance.",
-                    "online-text": "<br><br><em>Via text/online:</em> Could sound harsher than intended - online communication lacks emotional nuance.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public display of indifference that might be performance rather than genuine feeling."
-                },
-                "thanks for letting me know": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of expressing annoyance about delayed information.",
-                    "boss": "<br><br><em>From boss:</em> Diplomatic way of showing displeasure about not being informed earlier.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Likely frustrated about being kept out of the loop on something important.",
-                    "teenager": "<br><br><em>From teenager:</em> Sarcastic response when they feel adults share information too late or patronizingly.",
-                    "parent": "<br><br><em>From parent:</em> Could indicate hurt that you didn't trust them with information sooner.",
-                    "friend": "<br><br><em>From friend:</em> Might feel left out or that you don't trust them with important news.",
-                    "family": "<br><br><em>From family member:</em> Could indicate family dynamics around communication and inclusion.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Passive-aggressive way of showing they're still affected by your life updates.",
-                    "child": "<br><br><em>From child:</em> Unusual phrasing for children - might be mimicking adult passive-aggressive responses.",
-                    "customer": "<br><br><em>From customer:</em> Professional displeasure about delayed service information or updates.",
-                    "stranger": "<br><br><em>From stranger:</em> Unusually passive-aggressive for strangers - might be having a bad day.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Could indicate neighborhood politics around sharing community information.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional response hiding frustration about receiving information late.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Formal way of expressing displeasure about delayed reporting.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could indicate trust issues or feeling excluded from your life decisions.",
-                    "online-text": "<br><br><em>Via text/online:</em> Extra passive-aggressive via text - tone makes sarcasm more obvious.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public way of calling out delayed information sharing."
-                },
-                "i'll think about it": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of declining without burning bridges.",
-                    "boss": "<br><br><em>From boss:</em> Could be genuine consideration or polite way of declining your proposal.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Might mean they need time or are avoiding conflict about disagreeing.",
-                    "teenager": "<br><br><em>From teenager:</em> Usually means no but they're avoiding immediate confrontation with authority.",
-                    "parent": "<br><br><em>From parent:</em> Could be genuine consideration or gentle way of preparing you for eventual no.",
-                    "friend": "<br><br><em>From friend:</em> Polite way of declining while preserving the friendship.",
-                    "family": "<br><br><em>From family member:</em> Family diplomacy - avoiding immediate family conflict.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Likely avoiding commitment while maintaining civil communication.",
-                    "child": "<br><br><em>From child:</em> Copying adult language to sound more mature while avoiding commitment.",
-                    "customer": "<br><br><em>From customer:</em> Could be genuine consideration or polite way of declining your recommendation.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite way strangers decline offers without being rude.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly way of declining requests while maintaining good relations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional way of handling customer requests they can't fulfill.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official consideration that might be leaning toward denial.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating politeness that often means they're not interested.",
-                    "online-text": "<br><br><em>Via text/online:</em> Easy response to give online - low commitment way to end conversation.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public diplomacy to avoid making decisions in front of others."
-                },
-                "good luck with that": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of expressing skepticism about your project or decision.",
-                    "boss": "<br><br><em>From boss:</em> Could indicate they think you're taking on too much or making poor choices.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship tension - they disagree but are stepping back from arguing.",
-                    "teenager": "<br><br><em>From teenager:</em> Sarcastic dismissal of adult plans or expectations they think are unrealistic.",
-                    "parent": "<br><br><em>From parent:</em> Could be genuine support or resigned acceptance that you won't take their advice.",
-                    "friend": "<br><br><em>From friend:</em> Might mean they think you're making a mistake but won't interfere.",
-                    "family": "<br><br><em>From family member:</em> Family dynamics - stepping back from giving unwanted advice.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Passive-aggressive way of expressing doubt about your life choices post-breakup.",
-                    "child": "<br><br><em>From child:</em> Unusual phrasing for children - might be copying dismissive adult language.",
-                    "customer": "<br><br><em>From customer:</em> Customer expressing doubt about service or product recommendations.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite but skeptical response to your plans or decisions.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly way of expressing doubt about your home improvement or life decisions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional skepticism about customer requests or expectations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official doubt about your proposed course of action.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Could indicate they think your dating approach or life choices are questionable.",
-                    "online-text": "<br><br><em>Via text/online:</em> Dismissive response that's easier to give online than face-to-face.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public way of distancing themselves from your decision."
-                },
-                "you do you": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of disengaging from your work decisions they disagree with.",
-                    "boss": "<br><br><em>From boss:</em> Could indicate they're letting you make mistakes or genuinely supporting autonomy.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship fatigue - they're tired of trying to influence your decisions.",
-                    "teenager": "<br><br><em>From teenager:</em> Dismissive response to adult expectations or advice they're rejecting.",
-                    "parent": "<br><br><em>From parent:</em> Could be healthy independence-building or frustrated resignation.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary - they disagree but won't damage relationship over it.",
-                    "family": "<br><br><em>From family member:</em> Family diplomacy when they disagree with your life choices.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Clear boundary-setting - they're disengaging from caring about your choices.",
-                    "child": "<br><br><em>From child:</em> Copying trendy language without fully understanding the dismissive undertone.",
-                    "customer": "<br><br><em>From customer:</em> Customer dismissing your professional advice or recommendations.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite way strangers avoid getting involved in your personal decisions.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly disengagement from your personal or property decisions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional boundary when customers ignore their expertise.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Could indicate they're allowing you autonomy while disagreeing.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating red flag - they're disengaging instead of communicating concerns.",
-                    "online-text": "<br><br><em>Via text/online:</em> Popular online dismissal that's become normalized but still carries judgment.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public way of distancing from your decision while appearing supportive."
-                },
-                "i'm not mad": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of denying workplace tension while clearly being upset.",
-                    "boss": "<br><br><em>From boss:</em> Could indicate they're trying to remain professional despite being frustrated.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Classic relationship phrase meaning they're definitely upset about something.",
-                    "teenager": "<br><br><em>From teenager:</em> Defensive response when adults ask about their attitude or behavior.",
-                    "parent": "<br><br><em>From parent:</em> Could mean they're disappointed but trying not to overreact.",
-                    "friend": "<br><br><em>From friend:</em> Friendship tension - they're upset but don't want to cause drama.",
-                    "family": "<br><br><em>From family member:</em> Family dynamics - trying to keep peace while feeling frustrated.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Likely still processing emotions but trying to appear unaffected.",
-                    "child": "<br><br><em>From child:</em> Child's way of denying obvious emotional upset - usually they are mad.",
-                    "customer": "<br><br><em>From customer:</em> Customer trying to remain civil while clearly frustrated with service.",
-                    "stranger": "<br><br><em>From stranger:</em> Unusual from strangers - might indicate road rage or service frustration.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborhood tension while trying to maintain civility.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional restraint while dealing with difficult situations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official composure while clearly frustrated with situation.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating communication issue - they're upset but denying it.",
-                    "online-text": "<br><br><em>Via text/online:</em> Text response that usually indicates they're actually quite upset.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public denial of obvious frustration or anger."
-                },
-                "it doesn't matter": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional disengagement when workplace decisions consistently go against them.",
-                    "boss": "<br><br><em>From boss:</em> Concerning response - might indicate they're overwhelmed or losing investment.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship danger sign - they've stopped fighting for what they want.",
-                    "teenager": "<br><br><em>From teenager:</em> Emotional shutdown when they feel their opinions aren't valued by adults.",
-                    "parent": "<br><br><em>From parent:</em> Could indicate they're respecting your independence or feeling dismissed.",
-                    "friend": "<br><br><em>From friend:</em> Friendship strain - they care but are tired of their concerns being ignored.",
-                    "family": "<br><br><em>From family member:</em> Family resignation when their input is consistently dismissed.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Emotional protection - still caring but trying to appear indifferent.",
-                    "child": "<br><br><em>From child:</em> Child's response when they feel powerless to change situations.",
-                    "customer": "<br><br><em>From customer:</em> Customer giving up on getting satisfactory resolution.",
-                    "stranger": "<br><br><em>From stranger:</em> Genuine indifference since they have no emotional investment.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborhood politics - giving up on community issues.",
-                    "service-worker": "<br><br><em>From service worker:</em> Job dissatisfaction showing through professional facade.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Concerning disengagement from their responsibilities.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating red flag - emotional withdrawal from relationship investment.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital emotional shutdown - easier to express indifference online.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public display of giving up on group decisions or dynamics."
-                },
-                "sure, why not": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Unenthusiastic professional agreement to workplace suggestions.",
-                    "boss": "<br><br><em>From boss:</em> Could indicate they're open to ideas but not particularly excited about them.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship compliance - going along but not genuinely enthusiastic.",
-                    "teenager": "<br><br><em>From teenager:</em> Reluctant agreement to adult plans or expectations.",
-                    "parent": "<br><br><em>From parent:</em> Supporting your decisions while having private reservations.",
-                    "friend": "<br><br><em>From friend:</em> Friendship accommodation - agreeing to maintain harmony.",
-                    "family": "<br><br><em>From family member:</em> Family peace-keeping by going along with decisions.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Neutral compliance to avoid conflict during necessary interactions.",
-                    "child": "<br><br><em>From child:</em> Child's unenthusiastic agreement to adult suggestions or rules.",
-                    "customer": "<br><br><em>From customer:</em> Customer accepting recommendations without strong preference.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite agreement from someone without strong investment in outcome.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly accommodation to community suggestions or requests.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional accommodation to customer requests they're indifferent about.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official approval without strong endorsement.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating politeness - going along with plans without enthusiasm.",
-                    "online-text": "<br><br><em>Via text/online:</em> Easy digital agreement that masks lack of genuine interest.",
-                    "group-setting": "<br><br><em>In group setting:</em> Group compliance to avoid being the dissenting voice."
-                },
-                "i guess": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional uncertainty or reluctant agreement with workplace decisions.",
-                    "boss": "<br><br><em>From boss:</em> Could indicate they're unsure or giving tentative approval.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship passive-aggression or genuine uncertainty about decisions.",
-                    "teenager": "<br><br><em>From teenager:</em> Classic teenage response showing reluctant compliance with adult expectations.",
-                    "parent": "<br><br><em>From parent:</em> Parental uncertainty or resignation about your choices.",
-                    "friend": "<br><br><em>From friend:</em> Friendship uncertainty - they're not confident but going along.",
-                    "family": "<br><br><em>From family member:</em> Family dynamics - uncertain agreement to maintain harmony.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Emotional distance - reluctant engagement with your requests.",
-                    "child": "<br><br><em>From child:</em> Child's uncertain response, possibly copying older sibling or adult speech patterns.",
-                    "customer": "<br><br><em>From customer:</em> Customer uncertainty about products or services offered.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite uncertainty from someone without strong opinions.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly uncertainty about community decisions or suggestions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional uncertainty or reluctant accommodation.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official uncertainty or tentative approval.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating uncertainty - not confident about relationship decisions.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital uncertainty that might be more passive-aggressive than intended.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public uncertainty or reluctant group compliance."
-                },
-                "that's one way to do it": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional diplomatic disagreement with your work approach.",
-                    "boss": "<br><br><em>From boss:</em> Managerial way of indicating they prefer different methods without direct criticism.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship tension - they think your approach is wrong but avoiding argument.",
-                    "teenager": "<br><br><em>From teenager:</em> Sarcastic dismissal of adult methods or expectations.",
-                    "parent": "<br><br><em>From parent:</em> Parental restraint - letting you learn from experience while disagreeing.",
-                    "friend": "<br><br><em>From friend:</em> Friendly disagreement while maintaining relationship harmony.",
-                    "family": "<br><br><em>From family member:</em> Family diplomacy when they disagree with your methods.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Critical distance - judging your choices while maintaining civility.",
-                    "child": "<br><br><em>From child:</em> Unusual phrasing for children - might be copying critical adult language.",
-                    "customer": "<br><br><em>From customer:</em> Customer disagreement with your professional methods or suggestions.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite disagreement from someone observing your approach.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly criticism of your home improvement or lifestyle choices.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional disagreement with customer methods while maintaining service.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official diplomatic disagreement with your proposed methods.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating criticism that might indicate compatibility issues.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital passive-aggression that's easier to express online.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public diplomatic disagreement while maintaining group harmony."
-                },
-                "interesting choice": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional diplomatic criticism of your workplace decisions.",
-                    "boss": "<br><br><em>From boss:</em> Managerial concern about your judgment while avoiding direct confrontation.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship passive-aggression about decisions that affect both of you.",
-                    "teenager": "<br><br><em>From teenager:</em> Sarcastic judgment of adult decisions or expectations.",
-                    "parent": "<br><br><em>From parent:</em> Parental concern expressed diplomatically while respecting your independence.",
-                    "friend": "<br><br><em>From friend:</em> Friendly concern about decisions they think might be mistakes.",
-                    "family": "<br><br><em>From family member:</em> Family judgment expressed politely to maintain relationships.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Critical observation of your post-relationship life choices.",
-                    "child": "<br><br><em>From child:</em> Child copying adult critical language without fully understanding implications.",
-                    "customer": "<br><br><em>From customer:</em> Customer skepticism about your professional recommendations.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite stranger judgment of your visible decisions or behavior.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly criticism of your property or lifestyle choices.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional restraint while disagreeing with customer choices.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official diplomatic concern about your decisions or methods.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating judgment that might indicate relationship incompatibility.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital judgment that's easier to express online than face-to-face.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public diplomatic criticism while maintaining group social dynamics."
-                },
-                "good for you": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional passive-aggression or genuine support depending on tone and context.",
-                    "boss": "<br><br><em>From boss:</em> Could be genuine recognition or subtle dismissal of achievements.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship sarcasm when they're not impressed with your accomplishments.",
-                    "teenager": "<br><br><em>From teenager:</em> Sarcastic dismissal of adult achievements or expectations.",
-                    "parent": "<br><br><em>From parent:</em> Could be genuine pride or subtle judgment depending on family dynamics.",
-                    "friend": "<br><br><em>From friend:</em> Could indicate friendship jealousy or genuine celebration of success.",
-                    "family": "<br><br><em>From family member:</em> Family dynamics around success and competition within family.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Passive-aggressive response to your post-relationship success or happiness.",
-                    "child": "<br><br><em>From child:</em> Child copying adult congratulatory language without understanding subtleties.",
-                    "customer": "<br><br><em>From customer:</em> Customer response that might be sarcastic about service quality.",
-                    "stranger": "<br><br><em>From stranger:</em> Could be genuine politeness or subtle judgment from observers.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborly response that might mask envy about your successes.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional response that might hide personal opinions.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official recognition that might lack genuine enthusiasm.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating response that could indicate support or subtle competition.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital response that's hard to interpret without vocal tone or context.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public response that might be performance for group rather than genuine feeling."
-                },
-                "leave me alone": {
-                    "teenager": "<br><br><em>From teenager:</em> Emotional overwhelm but still wanting parents to care from a distance.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship stress - needing space but not wanting to be abandoned.",
-                    "child": "<br><br><em>From child:</em> Child overwhelm but still needing parental presence and security.",
-                    "parent": "<br><br><em>From parent:</em> Parental burnout but still wanting family connection and support.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary when overwhelmed but not wanting to lose the relationship.",
-                    "family": "<br><br><em>From family member:</em> Family stress while still wanting to be part of family unit.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Clear boundary setting while potentially still having complicated feelings.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional overwhelm but still needing workplace support systems.",
-                    "boss": "<br><br><em>From boss:</em> Management stress but still needing team functionality.",
-                    "customer": "<br><br><em>From customer:</em> Customer frustration but still wanting resolution to their issue.",
-                    "stranger": "<br><br><em>From stranger:</em> Clear boundary with no expectation of continued care or contact.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Neighborhood boundary while still wanting civil community relations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional boundary while still needing to maintain service relationship.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official boundary while still maintaining necessary professional relationships.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating overwhelm but still wanting romantic connection.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital boundary that might be stronger than intended due to lack of tone.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public overwhelm but still wanting to belong to the group."
-                },
-                "you wouldn't get it": {
-                    "teenager": "<br><br><em>From teenager:</em> Feeling misunderstood by adults who they think lack relevant experience.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship frustration about feeling unheard or invalidated.",
-                    "child": "<br><br><em>From child:</em> Child feeling like adults don't understand their perspective or emotions.",
-                    "parent": "<br><br><em>From parent:</em> Generational gap feeling - thinking you lack life experience to understand.",
-                    "friend": "<br><br><em>From friend:</em> Friendship strain when they feel you can't relate to their situation.",
-                    "family": "<br><br><em>From family member:</em> Family dynamics about different life experiences or values.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship assumption that you never truly understood them.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional frustration about different work experiences or perspectives.",
-                    "boss": "<br><br><em>From boss:</em> Management assumption that subordinates can't understand leadership pressures.",
-                    "customer": "<br><br><em>From customer:</em> Customer frustration assuming service providers lack relevant experience.",
-                    "stranger": "<br><br><em>From stranger:</em> Assumption about strangers lacking context for their situation.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community assumption about different lifestyles or circumstances.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional assumption that customers don't understand job pressures.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official assumption about civilians lacking institutional knowledge.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating assumption about different backgrounds or experiences.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital assumption that's easier to make without face-to-face connection.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public assumption about group members lacking relevant experience."
-                },
-                "i'm fine on my own": {
-                    "teenager": "<br><br><em>From teenager:</em> Asserting independence while still needing parental support and validation.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship defense mechanism after feeling hurt or unsupported.",
-                    "child": "<br><br><em>From child:</em> Child's attempt at independence while still needing adult care and attention.",
-                    "parent": "<br><br><em>From parent:</em> Parental pride mixed with potential loneliness or need for support.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary after feeling let down but still valuing the friendship.",
-                    "family": "<br><br><em>From family member:</em> Family independence assertion while still wanting family connection.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-breakup strength display while potentially still processing feelings.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional independence assertion while still needing workplace collaboration.",
-                    "boss": "<br><br><em>From boss:</em> Management strength display while potentially needing team support.",
-                    "customer": "<br><br><em>From customer:</em> Customer independence assertion while still needing service resolution.",
-                    "stranger": "<br><br><em>From stranger:</em> Genuine independence with no expectation of continued interaction.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community independence while still being part of neighborhood.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional independence while still needing job security and support.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official independence while still operating within institutional systems.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating independence assertion while still wanting romantic connection.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital independence that might mask real need for support.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public independence display while still wanting group acceptance."
-                },
-                "don't worry about me": {
-                    "teenager": "<br><br><em>From teenager:</em> Not wanting to burden adults while still needing their care and attention.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship self-sacrifice while actually needing partner support.",
-                    "child": "<br><br><em>From child:</em> Child's attempt to protect adults from worry while needing help.",
-                    "parent": "<br><br><em>From parent:</em> Parental self-sacrifice while actually needing family support.",
-                    "friend": "<br><br><em>From friend:</em> Friendship consideration while actually needing friend support.",
-                    "family": "<br><br><em>From family member:</em> Family self-sacrifice while needing family help and care.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship boundary while potentially still wanting care.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional consideration while actually needing workplace support.",
-                    "boss": "<br><br><em>From boss:</em> Management stoicism while potentially needing team or organizational support.",
-                    "customer": "<br><br><em>From customer:</em> Customer politeness while actually needing service attention.",
-                    "stranger": "<br><br><em>From stranger:</em> Genuine consideration with no expectation of continued care.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community consideration while potentially needing neighborhood support.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional consideration while potentially needing job support.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official stoicism while potentially needing institutional support.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating consideration while actually wanting romantic care.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital politeness that might mask real need for support.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public consideration while actually needing group support."
-                },
-                "i can handle it": {
-                    "teenager": "<br><br><em>From teenager:</em> Asserting maturity while still needing adult guidance and support.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship independence while actually needing partner help.",
-                    "child": "<br><br><em>From child:</em> Child's attempt to appear capable while still needing adult assistance.",
-                    "parent": "<br><br><em>From parent:</em> Parental strength display while potentially being overwhelmed.",
-                    "friend": "<br><br><em>From friend:</em> Friendship independence while actually needing friend support.",
-                    "family": "<br><br><em>From family member:</em> Family strength display while needing family assistance.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship competence display while potentially struggling.",
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional competence display while actually needing workplace help.",
-                    "boss": "<br><br><em>From boss:</em> Management strength display while potentially being overwhelmed.",
-                    "customer": "<br><br><em>From customer:</em> Customer independence while actually needing service assistance.",
-                    "stranger": "<br><br><em>From stranger:</em> Genuine capability assertion with no expectation of help.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community independence while potentially needing neighborhood assistance.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional competence while potentially needing job support.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official competence while potentially needing institutional resources.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating independence while wanting to appear capable to romantic partner.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital competence display that might mask real struggles.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public competence display while potentially needing group help."
-                },
-                "let me run it by my team": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional stalling tactic when they're unsure or disagree with proposal.",
-                    "boss": "<br><br><em>From boss:</em> Management deflection to avoid taking personal responsibility for decisions.",
-                    "customer": "<br><br><em>From customer:</em> Unusual from customers - might be buying time or showing off authority.",
-                    "stranger": "<br><br><em>From stranger:</em> Professional networking response to avoid immediate commitment.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional protocol while potentially disagreeing with request.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official process while potentially having personal reservations.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Unusual in dating - might indicate over-caution or lack of independence.",
-                    "friend": "<br><br><em>From friend:</em> Formal response that might indicate they're treating friendship like business.",
-                    "family": "<br><br><em>From family member:</em> Family formality that might indicate relationship distance.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship formality that could indicate communication problems.",
-                    "teenager": "<br><br><em>From teenager:</em> Copying professional language to sound mature or avoid responsibility.",
-                    "parent": "<br><br><em>From parent:</em> Parental committee approach to avoid being the sole decision-maker.",
-                    "child": "<br><br><em>From child:</em> Child copying business language without understanding implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Professional distance to avoid personal decision-making.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community formality to involve others in neighborhood decisions.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital stalling tactic that's easier to use than direct rejection.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public deflection to avoid taking individual responsibility."
-                },
-                "that's not really my area": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional boundary to avoid tasks outside their expertise or interest.",
-                    "boss": "<br><br><em>From boss:</em> Management deflection when they don't want to handle certain issues.",
-                    "customer": "<br><br><em>From customer:</em> Customer avoiding responsibility for understanding product or service details.",
-                    "stranger": "<br><br><em>From stranger:</em> Honest boundary about expertise when approached for help or advice.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional boundary when requests fall outside job responsibilities.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official jurisdictional boundary or expertise limitation.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating boundary about topics they're uncomfortable discussing.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary when they can't or don't want to help with specific issues.",
-                    "family": "<br><br><em>From family member:</em> Family boundary about expertise or involvement in certain family matters.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship boundary or avoidance of certain household/life responsibilities.",
-                    "teenager": "<br><br><em>From teenager:</em> Avoiding adult responsibilities by claiming lack of expertise or authority.",
-                    "parent": "<br><br><em>From parent:</em> Parental boundary about areas where they defer to other expertise.",
-                    "child": "<br><br><em>From child:</em> Child copying adult language to avoid tasks or responsibilities.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship boundary to avoid involvement in your personal matters.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community boundary about involvement in neighborhood or personal issues.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital boundary that's easier to maintain than face-to-face rejection.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public boundary to avoid group responsibility or expertise claims."
-                },
-                "i'm swamped right now": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional way of declining additional work while maintaining workplace relationships.",
-                    "boss": "<br><br><em>From boss:</em> Management communication about workload while potentially prioritizing other tasks.",
-                    "customer": "<br><br><em>From customer:</em> Customer indicating they're too busy for detailed explanations or processes.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite way to decline involvement or assistance from unfamiliar people.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional indication of workload while managing multiple customer demands.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official communication about capacity while managing institutional responsibilities.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating communication about availability while potentially managing relationship priorities.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary about availability while maintaining relationship connection.",
-                    "family": "<br><br><em>From family member:</em> Family communication about capacity while managing family obligations.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship communication about overwhelm while needing partner understanding.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage way of avoiding additional responsibilities while claiming adult-level busyness.",
-                    "parent": "<br><br><em>From parent:</em> Parental communication about overwhelming responsibilities and time constraints.",
-                    "child": "<br><br><em>From child:</em> Child copying adult language to avoid chores or additional tasks.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship boundary about availability while avoiding continued involvement.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community boundary about availability while maintaining neighborly relationships.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital communication about busyness that's easier to claim than explain in detail.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public communication about capacity while managing group expectations and responsibilities."
-                },
-                "we should revisit this later": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional postponement hoping the issue will resolve itself or become irrelevant.",
-                    "boss": "<br><br><em>From boss:</em> Management delay tactic when they don't want to address issues immediately.",
-                    "customer": "<br><br><em>From customer:</em> Customer postponement when they're unsure or need time to consider options.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite way to end discussion without commitment to future engagement.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional postponement while managing multiple priorities or seeking guidance.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official postponement while considering policy or jurisdictional issues.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating postponement when topics are too serious or uncomfortable for current stage.",
-                    "friend": "<br><br><em>From friend:</em> Friendship postponement when discussions are too intense or they need processing time.",
-                    "family": "<br><br><em>From family member:</em> Family postponement to avoid immediate conflict or emotional discussions.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship postponement when topics are too heated or require more thoughtful discussion.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage postponement hoping adult concerns will be forgotten or become irrelevant.",
-                    "parent": "<br><br><em>From parent:</em> Parental postponement when they need time to consider appropriate responses or consequences.",
-                    "child": "<br><br><em>From child:</em> Child postponement copying adult language to avoid immediate consequences.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship postponement to avoid dealing with complicated emotional or practical issues.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community postponement hoping neighborhood issues will resolve naturally.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital postponement that's easier to suggest than face-to-face discussions.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public postponement to avoid making decisions or having conflicts in front of others."
-                },
-                "i'll ping you about it": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional follow-up commitment that often doesn't happen unless reminded.",
-                    "boss": "<br><br><em>From boss:</em> Management communication indicating low priority or delegation expectation.",
-                    "customer": "<br><br><em>From customer:</em> Customer follow-up commitment while potentially losing interest or priority.",
-                    "stranger": "<br><br><em>From stranger:</em> Casual follow-up commitment with low likelihood of actual contact.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional follow-up commitment while managing multiple customer relationships.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official follow-up commitment while balancing institutional priorities.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating follow-up that might indicate interest level or communication style.",
-                    "friend": "<br><br><em>From friend:</em> Friendship follow-up commitment that depends on their follow-through habits.",
-                    "family": "<br><br><em>From family member:</em> Family follow-up commitment while managing multiple family relationships and obligations.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship follow-up that might indicate communication patterns or priority levels.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage follow-up using modern language while potentially avoiding actual commitment.",
-                    "parent": "<br><br><em>From parent:</em> Parental follow-up commitment while managing multiple family and personal responsibilities.",
-                    "child": "<br><br><em>From child:</em> Child using modern communication language without understanding follow-through expectations.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship follow-up with uncertain likelihood of actual contact.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community follow-up commitment while managing neighborly relationships and boundaries.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital follow-up commitment that's easy to make but harder to remember and execute.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public follow-up commitment that creates accountability but might not guarantee action."
-                },
-                "that's a great question": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional stalling tactic when they don't know the answer but need time to think.",
-                    "boss": "<br><br><em>From boss:</em> Management response buying time while considering how to address complex issues.",
-                    "customer": "<br><br><em>From customer:</em> Customer acknowledgment while they process information or consider their response.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite acknowledgment while they formulate a response to unexpected questions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional response while they seek information or guidance from supervisors.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official acknowledgment while they consider policy implications or seek guidance.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating response buying time for sensitive or complex relationship topics.",
-                    "friend": "<br><br><em>From friend:</em> Friendship acknowledgment while they consider how to respond to personal or challenging questions.",
-                    "family": "<br><br><em>From family member:</em> Family response buying time for sensitive family dynamics or decisions.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship stalling while they consider implications of their response.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage response copying adult language while avoiding immediate answers.",
-                    "parent": "<br><br><em>From parent:</em> Parental response buying time to formulate appropriate guidance or explanations.",
-                    "child": "<br><br><em>From child:</em> Child copying adult response patterns without understanding the stalling implication.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship response buying time for emotionally complex questions.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community response while considering neighborhood politics or relationships.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital stalling response that gives time to research or consider answers.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public stalling while considering group dynamics and appropriate responses."
-                },
-                "i hear what you're saying": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional diplomatic disagreement while maintaining workplace relationships.",
-                    "boss": "<br><br><em>From boss:</em> Management acknowledgment while potentially preparing to override or redirect decisions.",
-                    "customer": "<br><br><em>From customer:</em> Customer acknowledgment while maintaining their own position or preferences.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite acknowledgment while maintaining personal boundaries or disagreement.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional acknowledgment while working within company policies or limitations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official acknowledgment while maintaining institutional positions or policies.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating diplomacy while potentially having different relationship perspectives.",
-                    "friend": "<br><br><em>From friend:</em> Friendship diplomacy while maintaining personal opinions or boundaries.",
-                    "family": "<br><br><em>From family member:</em> Family diplomacy while potentially disagreeing with family decisions or perspectives.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship acknowledgment while potentially preparing to assert different viewpoints.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage diplomatic response while potentially dismissing adult perspectives.",
-                    "parent": "<br><br><em>From parent:</em> Parental acknowledgment while potentially maintaining different standards or decisions.",
-                    "child": "<br><br><em>From child:</em> Child copying diplomatic language while potentially not understanding or agreeing.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship diplomacy while maintaining emotional distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community diplomacy while potentially disagreeing with neighborhood perspectives.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital diplomacy that maintains politeness while potentially disagreeing.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public diplomacy while managing group dynamics and personal positions."
-                },
-                "let's table this for now": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional postponement hoping workplace issues will resolve or become irrelevant.",
-                    "boss": "<br><br><em>From boss:</em> Management postponement when they don't want to address difficult decisions immediately.",
-                    "customer": "<br><br><em>From customer:</em> Customer postponement when they need time to consider or research options.",
-                    "stranger": "<br><br><em>From stranger:</em> Formal postponement to end discussions without commitment to future engagement.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional postponement while seeking guidance or managing other priorities.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official postponement while considering policy implications or seeking approval.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating postponement when relationship topics become too intense or premature.",
-                    "friend": "<br><br><em>From friend:</em> Friendship postponement when discussions become too personal or confrontational.",
-                    "family": "<br><br><em>From family member:</em> Family postponement to avoid immediate conflict or emotional escalation.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship postponement when discussions become too heated or require cooler heads.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage postponement using formal language to avoid adult consequences or discussions.",
-                    "parent": "<br><br><em>From parent:</em> Parental postponement when they need time to consider appropriate responses or consequences.",
-                    "child": "<br><br><em>From child:</em> Child using formal language to postpone discussions about rules or consequences.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship postponement to avoid dealing with emotional or practical complications.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community postponement hoping neighborhood conflicts will resolve naturally.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital postponement that's easier to suggest than continue difficult conversations.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public postponement to avoid making decisions or having conflicts in front of group."
-                },
-                "i wish i could but": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional rejection softened to maintain workplace relationships and future collaboration.",
-                    "boss": "<br><br><em>From boss:</em> Management rejection expressing regret while maintaining authority and boundaries.",
-                    "customer": "<br><br><em>From customer:</em> Customer rejection while trying to maintain positive service relationship.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite rejection from someone trying to be kind while maintaining boundaries.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional rejection while expressing genuine regret about service limitations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official rejection while expressing understanding of the request's importance.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating rejection softened to avoid hurting feelings while maintaining clear boundaries.",
-                    "friend": "<br><br><em>From friend:</em> Friendship rejection expressing genuine regret while protecting personal boundaries or capacity.",
-                    "family": "<br><br><em>From family member:</em> Family rejection softened to maintain relationships while establishing necessary boundaries.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship rejection expressing regret while communicating personal limits or priorities.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage rejection copying adult politeness while avoiding responsibilities or commitments.",
-                    "parent": "<br><br><em>From parent:</em> Parental rejection expressing understanding while maintaining necessary boundaries or decisions.",
-                    "child": "<br><br><em>From child:</em> Child copying polite rejection language while potentially not understanding the commitment being avoided.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship rejection maintaining civility while establishing clear post-breakup boundaries.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community rejection maintaining neighborly politeness while protecting personal boundaries.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital rejection that's easier to express kindly through text than face-to-face conversation.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public rejection that maintains social politeness while declining group requests or expectations."
-                },
-                "that's really tempting but": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional rejection using false enthusiasm while declining workplace opportunities or requests.",
-                    "boss": "<br><br><em>From boss:</em> Management rejection expressing false interest while maintaining authority over decisions.",
-                    "customer": "<br><br><em>From customer:</em> Customer rejection using politeness while not being genuinely interested in offerings.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite rejection using social niceties while having no real interest or intention.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional rejection maintaining customer service politeness while declining requests.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official rejection using diplomatic language while maintaining institutional boundaries.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating rejection using false enthusiasm to soften the blow of declining romantic advances.",
-                    "friend": "<br><br><em>From friend:</em> Friendship rejection using politeness while not being genuinely interested in friend's suggestions.",
-                    "family": "<br><br><em>From family member:</em> Family rejection maintaining harmony while declining family plans or obligations.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship rejection using false enthusiasm while protecting personal preferences or energy.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage rejection copying adult politeness while having no intention of participating.",
-                    "parent": "<br><br><em>From parent:</em> Parental rejection using diplomacy while maintaining authority over family decisions.",
-                    "child": "<br><br><em>From child:</em> Child copying adult rejection language while potentially not understanding the insincerity.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship rejection maintaining surface politeness while having no genuine interest.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community rejection maintaining neighborly facade while declining neighborhood involvement.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital rejection that's easier to make sound enthusiastic through text than voice.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public rejection using group-appropriate politeness while declining participation."
-                },
-                "i have a prior commitment": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional excuse that may or may not be true, used to decline workplace social events.",
-                    "boss": "<br><br><em>From boss:</em> Management excuse maintaining authority while avoiding certain workplace obligations or events.",
-                    "customer": "<br><br><em>From customer:</em> Customer excuse to avoid extended service interactions or additional commitments.",
-                    "stranger": "<br><br><em>From stranger:</em> Formal excuse providing socially acceptable reason to decline stranger requests or invitations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional excuse while maintaining service boundaries and personal time protection.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official excuse maintaining professional boundaries while declining non-essential requests.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating excuse that could be real or fabricated to decline dates or relationship progression.",
-                    "friend": "<br><br><em>From friend:</em> Friendship excuse that might be real or created to decline social obligations without hurting feelings.",
-                    "family": "<br><br><em>From family member:</em> Family excuse used to decline family gatherings or obligations while maintaining relationships.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship excuse that might indicate social fatigue or need for personal time.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage excuse copying adult language to avoid family or social obligations.",
-                    "parent": "<br><br><em>From parent:</em> Parental excuse managing multiple family and personal obligations while protecting time boundaries.",
-                    "child": "<br><br><em>From child:</em> Child copying formal excuse language while potentially not having actual commitments.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship excuse providing socially acceptable reason to avoid continued contact.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community excuse maintaining neighborly politeness while declining involvement in neighborhood activities.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital excuse that's easier to claim through text without immediate questioning.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public excuse that provides group-acceptable reason for declining participation."
-                },
-                "rain check": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional postponement that rarely results in actual rescheduling of workplace social events.",
-                    "boss": "<br><br><em>From boss:</em> Management postponement maintaining politeness while potentially having no intention to reschedule.",
-                    "customer": "<br><br><em>From customer:</em> Customer postponement while maintaining service relationship but potentially losing interest.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite postponement from someone who likely won't follow through with future contact.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional postponement while maintaining customer relations but potentially avoiding personal connections.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official postponement maintaining diplomatic relations while potentially not prioritizing rescheduling.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating postponement that could indicate genuine interest or polite rejection.",
-                    "friend": "<br><br><em>From friend:</em> Friendship postponement that might indicate genuine scheduling conflicts or declining interest.",
-                    "family": "<br><br><em>From family member:</em> Family postponement while maintaining family relationships but potentially avoiding certain gatherings.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship postponement that might indicate need for space or changing priorities.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage postponement copying adult language while potentially avoiding commitments entirely.",
-                    "parent": "<br><br><em>From parent:</em> Parental postponement managing competing priorities while maintaining relationships with adult children.",
-                    "child": "<br><br><em>From child:</em> Child copying adult postponement language while potentially not understanding rescheduling implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship postponement maintaining civility while likely avoiding future contact.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community postponement maintaining neighborly relations while potentially avoiding closer involvement.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital postponement that's easy to offer but often forgotten or not followed through.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public postponement that appears socially gracious while potentially avoiding individual follow-through."
-                },
-                "i'm not really in a position to": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional boundary suggesting inability while potentially having capacity but lacking willingness.",
-                    "boss": "<br><br><em>From boss:</em> Management boundary indicating authority limitations while potentially having more flexibility than claimed.",
-                    "customer": "<br><br><em>From customer:</em> Customer boundary indicating constraints while potentially having more capacity than expressed.",
-                    "stranger": "<br><br><em>From stranger:</em> Formal boundary from someone avoiding involvement without providing detailed explanations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional boundary indicating policy or capacity limitations while maintaining service relationships.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official boundary indicating jurisdictional or policy constraints while potentially having discretion.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating boundary indicating readiness or capacity limitations for relationship progression.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary indicating capacity limitations while potentially protecting personal resources or energy.",
-                    "family": "<br><br><em>From family member:</em> Family boundary indicating capacity constraints while managing multiple family obligations and relationships.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship boundary indicating capacity or readiness limitations while managing partnership dynamics.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage boundary copying adult language while avoiding responsibilities or commitments.",
-                    "parent": "<br><br><em>From parent:</em> Parental boundary indicating resource or capacity constraints while managing family responsibilities.",
-                    "child": "<br><br><em>From child:</em> Child copying adult boundary language while potentially not understanding capacity implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship boundary indicating emotional or practical constraints while maintaining distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community boundary indicating capacity limitations while maintaining neighborly relationships.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital boundary that's easier to express through text than explain capacity limitations in person.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public boundary indicating constraints while managing group expectations and social dynamics."
-                },
-                "maybe next time": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional postponement that typically doesn't result in future workplace social participation.",
-                    "boss": "<br><br><em>From boss:</em> Management postponement maintaining politeness while potentially having no intention of future participation.",
-                    "customer": "<br><br><em>From customer:</em> Customer postponement while maintaining service relationships but likely indicating declining interest.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite postponement from someone who likely won't initiate or accept future contact.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional postponement maintaining customer relations while protecting personal boundaries.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official postponement maintaining diplomatic relations while potentially not planning future engagement.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating postponement that usually indicates polite rejection rather than genuine future interest.",
-                    "friend": "<br><br><em>From friend:</em> Friendship postponement that might indicate genuine scheduling conflicts or gradually declining interest.",
-                    "family": "<br><br><em>From family member:</em> Family postponement while maintaining relationships but potentially avoiding certain family activities.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship postponement that might indicate need for space or changing activity preferences.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage postponement copying adult language while typically avoiding commitments entirely.",
-                    "parent": "<br><br><em>From parent:</em> Parental postponement managing competing priorities while maintaining relationships.",
-                    "child": "<br><br><em>From child:</em> Child copying adult postponement language while potentially not understanding commitment implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship postponement maintaining surface civility while likely avoiding future contact.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community postponement maintaining neighborly politeness while avoiding closer community involvement.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital postponement that's easy to offer but typically not followed through with actual planning.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public postponement maintaining social politeness while likely not pursuing individual follow-through."
-                },
-                "if that's what you want": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional passive-aggression indicating disagreement while avoiding workplace confrontation.",
-                    "boss": "<br><br><em>From boss:</em> Management passive-aggression suggesting they think the decision is wrong but won't override it.",
-                    "customer": "<br><br><em>From customer:</em> Customer passive-aggression indicating dissatisfaction while maintaining service relationship.",
-                    "stranger": "<br><br><em>From stranger:</em> Polite disagreement from someone who has opinions but won't engage in conflict.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional passive-aggression while complying with customer requests they disagree with.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official passive-aggression indicating they think the choice is wrong but won't interfere.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating passive-aggression indicating relationship disagreement while avoiding direct conflict.",
-                    "friend": "<br><br><em>From friend:</em> Friendship passive-aggression indicating they think you're making a mistake but won't argue further.",
-                    "family": "<br><br><em>From family member:</em> Family passive-aggression showing disagreement while maintaining family peace.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship passive-aggression indicating strong disagreement while avoiding escalation.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage passive-aggression showing disagreement with adult decisions while appearing compliant.",
-                    "parent": "<br><br><em>From parent:</em> Parental passive-aggression indicating they think you're making poor choices but respecting independence.",
-                    "child": "<br><br><em>From child:</em> Child copying passive-aggressive language while potentially not understanding the dismissive undertone.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship passive-aggression indicating judgment about your life choices while maintaining distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community passive-aggression indicating disagreement with neighborhood decisions while avoiding conflict.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital passive-aggression that comes across more dismissive than intended due to lack of tone.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public passive-aggression indicating disagreement while appearing to support group decisions."
-                },
-                "must be nice": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional passive-aggression indicating workplace jealousy or resentment about opportunities or treatment.",
-                    "boss": "<br><br><em>From boss:</em> Management passive-aggression indicating they feel subordinates have easier situations than leadership.",
-                    "customer": "<br><br><em>From customer:</em> Customer passive-aggression indicating resentment about service privileges or treatment they're not receiving.",
-                    "stranger": "<br><br><em>From stranger:</em> Social passive-aggression indicating envy about visible privileges or advantages they observe.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional passive-aggression indicating resentment about customer privileges or treatment.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official passive-aggression indicating resentment about others having fewer responsibilities or constraints.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating passive-aggression indicating jealousy about your lifestyle, opportunities, or other relationships.",
-                    "friend": "<br><br><em>From friend:</em> Friendship passive-aggression indicating jealousy about your successes, opportunities, or life circumstances.",
-                    "family": "<br><br><em>From family member:</em> Family passive-aggression indicating sibling rivalry or resentment about different family treatment or opportunities.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship passive-aggression indicating jealousy about your opportunities, freedoms, or life situation.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage passive-aggression indicating resentment about adult privileges or freedoms they don't have.",
-                    "parent": "<br><br><em>From parent:</em> Parental passive-aggression indicating resentment about your adult freedoms or fewer responsibilities.",
-                    "child": "<br><br><em>From child:</em> Child copying passive-aggressive language while potentially not understanding the envious undertone.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship passive-aggression indicating jealousy about your post-breakup life or happiness.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community passive-aggression indicating jealousy about your property, lifestyle, or neighborhood advantages.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital passive-aggression that's easier to express online than face-to-face jealousy or resentment.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public passive-aggression indicating jealousy while appearing to make casual observations."
-                },
-                "i'm sure you know best": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional sarcasm indicating disagreement while maintaining workplace civility and avoiding confrontation.",
-                    "boss": "<br><br><em>From boss:</em> Management sarcasm indicating they think subordinate decisions are wrong while avoiding micromanagement appearance.",
-                    "customer": "<br><br><em>From customer:</em> Customer sarcasm indicating dissatisfaction with service recommendations while maintaining transactional relationship.",
-                    "stranger": "<br><br><em>From stranger:</em> Social sarcasm indicating disagreement with strangers while avoiding prolonged conflict or engagement.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional sarcasm indicating disagreement with customer choices while maintaining service politeness.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official sarcasm indicating disagreement while respecting others' autonomy or jurisdiction.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating sarcasm indicating relationship frustration about decision-making or communication patterns.",
-                    "friend": "<br><br><em>From friend:</em> Friendship sarcasm indicating they think you're making mistakes while avoiding friendship damage.",
-                    "family": "<br><br><em>From family member:</em> Family sarcasm indicating disagreement with family decisions while maintaining family relationships.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship sarcasm indicating frustration about decision-making patterns or feeling unheard.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage sarcasm indicating rebellion against adult authority while appearing compliant.",
-                    "parent": "<br><br><em>From parent:</em> Parental sarcasm indicating disagreement with adult children's choices while respecting independence.",
-                    "child": "<br><br><em>From child:</em> Child copying sarcastic language while potentially not understanding the dismissive implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship sarcasm indicating judgment about your decisions while maintaining emotional distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community sarcasm indicating disagreement with neighborhood decisions while avoiding direct confrontation.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital sarcasm that comes across more dismissive than intended due to lack of vocal tone indicators.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public sarcasm indicating disagreement while appearing to defer to group or individual authority."
-                },
-                "don't let me stop you": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional passive-aggression indicating strong disagreement while dramatically stepping back from involvement.",
-                    "boss": "<br><br><em>From boss:</em> Management passive-aggression indicating they think subordinates are making mistakes but won't prevent them.",
-                    "customer": "<br><br><em>From customer:</em> Customer passive-aggression indicating dissatisfaction while dramatically withdrawing from service interaction.",
-                    "stranger": "<br><br><em>From stranger:</em> Social passive-aggression indicating strong disagreement while theatrically disengaging from conflict.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional passive-aggression indicating disagreement while maintaining service boundaries dramatically.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official passive-aggression indicating they think actions are wrong while respecting autonomy dramatically.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating passive-aggression indicating relationship frustration while theatrically withdrawing support.",
-                    "friend": "<br><br><em>From friend:</em> Friendship passive-aggression indicating strong disagreement while dramatically stepping back from friendship involvement.",
-                    "family": "<br><br><em>From family member:</em> Family passive-aggression indicating disagreement while theatrically withdrawing family support or involvement.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship passive-aggression indicating strong disagreement while dramatically withdrawing partnership support.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage passive-aggression indicating rebellion while theatrically appearing to comply with adult authority.",
-                    "parent": "<br><br><em>From parent:</em> Parental passive-aggression indicating disagreement while dramatically respecting adult children's independence.",
-                    "child": "<br><br><em>From child:</em> Child copying dramatic passive-aggressive language while potentially not understanding the theatrical withdrawal.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship passive-aggression indicating judgment while dramatically emphasizing emotional distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community passive-aggression indicating strong disagreement while theatrically withdrawing neighborhood involvement.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital passive-aggression that appears more dramatic through text than intended vocal delivery.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public passive-aggression indicating disagreement while theatrically withdrawing from group decision-making."
-                },
-                "that's your choice": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional passive-aggression indicating disagreement while avoiding workplace responsibility for outcomes.",
-                    "boss": "<br><br><em>From boss:</em> Management passive-aggression indicating they think subordinate choices are wrong while respecting autonomy.",
-                    "customer": "<br><br><em>From customer:</em> Customer passive-aggression indicating dissatisfaction with service options while maintaining transactional boundaries.",
-                    "stranger": "<br><br><em>From stranger:</em> Social passive-aggression indicating disagreement while avoiding prolonged engagement or conflict with unfamiliar people.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional passive-aggression indicating disagreement with customer choices while maintaining service politeness.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official passive-aggression indicating disagreement while respecting individual autonomy or jurisdiction.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating passive-aggression indicating relationship disagreement while avoiding direct confrontation about choices.",
-                    "friend": "<br><br><em>From friend:</em> Friendship passive-aggression indicating they think you're making mistakes while protecting friendship boundaries.",
-                    "family": "<br><br><em>From family member:</em> Family passive-aggression indicating disagreement with family member choices while maintaining family relationships.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship passive-aggression indicating strong disagreement while avoiding partnership conflict escalation.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage passive-aggression indicating disagreement with adult expectations while appearing to respect authority.",
-                    "parent": "<br><br><em>From parent:</em> Parental passive-aggression indicating disagreement with adult children's choices while respecting their independence.",
-                    "child": "<br><br><em>From child:</em> Child copying passive-aggressive language while potentially not understanding the judgmental implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship passive-aggression indicating judgment about your life choices while maintaining emotional distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community passive-aggression indicating disagreement with neighborhood or personal choices while maintaining civility.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital passive-aggression that can sound more dismissive through text than intended vocal delivery.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public passive-aggression indicating disagreement while appearing to respect individual or group autonomy."
-                },
-                "hope it works out": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional false encouragement masking skepticism about workplace decisions or projects.",
-                    "boss": "<br><br><em>From boss:</em> Management false support indicating they think subordinate plans will fail but won't intervene.",
-                    "customer": "<br><br><em>From customer:</em> Customer false politeness masking doubt about service outcomes or recommendations.",
-                    "stranger": "<br><br><em>From stranger:</em> Social politeness masking skepticism about strangers' plans or decisions without investment in outcomes.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional politeness masking doubt about customer choices while maintaining service relationships.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official false encouragement masking institutional skepticism about individual or organizational plans.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating false support masking relationship skepticism about your choices or future plans.",
-                    "friend": "<br><br><em>From friend:</em> Friendship false encouragement masking genuine concern about decisions they think are mistakes.",
-                    "family": "<br><br><em>From family member:</em> Family false support masking skepticism about family member decisions while maintaining relationships.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship false encouragement masking strong disagreement about partnership decisions or life choices.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage false politeness masking skepticism about adult plans while appearing supportive.",
-                    "parent": "<br><br><em>From parent:</em> Parental false encouragement masking concern about adult children's choices while respecting independence.",
-                    "child": "<br><br><em>From child:</em> Child copying adult false encouragement language while potentially not understanding the skeptical undertone.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship false support masking hope that your plans don't succeed or bring you happiness.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community false encouragement masking skepticism about neighborhood or personal decisions while maintaining civility.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital false support that's easier to express insincerely through text than face-to-face interaction.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public false encouragement masking private skepticism while appearing supportive in social situations."
-                },
-                "i don't have time for drama": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional boundary claiming superiority while actually being affected by workplace conflicts or politics.",
-                    "boss": "<br><br><em>From boss:</em> Management boundary claiming authority while actually being impacted by organizational drama or interpersonal issues.",
-                    "customer": "<br><br><em>From customer:</em> Customer boundary claiming efficiency while actually being frustrated by service complications or interpersonal dynamics.",
-                    "stranger": "<br><br><em>From stranger:</em> Social boundary claiming detachment while actually being affected by social conflicts or tensions.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional boundary claiming work focus while actually being impacted by customer or workplace drama.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official boundary claiming institutional focus while actually being affected by political or interpersonal conflicts.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating boundary claiming emotional maturity while actually being affected by relationship conflicts or complications.",
-                    "friend": "<br><br><em>From friend:</em> Friendship boundary claiming emotional health while actually being impacted by social drama or friendship conflicts.",
-                    "family": "<br><br><em>From family member:</em> Family boundary claiming maturity while actually being affected by family drama or interpersonal tensions.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship boundary claiming emotional stability while actually being impacted by partnership conflicts or family drama.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage boundary claiming maturity while actually being deeply affected by social or family drama.",
-                    "parent": "<br><br><em>From parent:</em> Parental boundary claiming focus while actually being impacted by family drama or interpersonal conflicts.",
-                    "child": "<br><br><em>From child:</em> Child copying adult boundary language while potentially not understanding the emotional protection function.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship boundary claiming emotional freedom while actually being affected by relationship drama or complications.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community boundary claiming detachment while actually being impacted by neighborhood conflicts or social tensions.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital boundary that's easier to claim through text while actually being affected by online drama or conflicts.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public boundary claiming superiority while actually being impacted by group drama or interpersonal tensions."
-                },
-                "it's not that serious": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional minimization masking workplace anxiety while claiming perspective on work situations.",
-                    "boss": "<br><br><em>From boss:</em> Management minimization masking leadership concerns while claiming organizational perspective.",
-                    "customer": "<br><br><em>From customer:</em> Customer minimization masking service anxiety while claiming perspective on service issues.",
-                    "stranger": "<br><br><em>From stranger:</em> Social minimization masking personal concerns while claiming objective perspective on situations.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional minimization masking job stress while claiming perspective on work situations.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official minimization masking institutional concerns while claiming professional perspective.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating minimization masking relationship concerns while claiming perspective on dating situations.",
-                    "friend": "<br><br><em>From friend:</em> Friendship minimization masking personal concerns while claiming perspective on friendship issues.",
-                    "family": "<br><br><em>From family member:</em> Family minimization masking emotional concerns while claiming perspective on family situations.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship minimization masking partnership concerns while claiming perspective on relationship issues.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage minimization masking adolescent anxiety while claiming mature perspective on situations.",
-                    "parent": "<br><br><em>From parent:</em> Parental minimization masking protective concerns while claiming life experience and perspective.",
-                    "child": "<br><br><em>From child:</em> Child copying adult minimization language while potentially not understanding the anxiety-masking function.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship minimization masking emotional impact while claiming perspective on relationship situations.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community minimization masking personal concerns while claiming perspective on neighborhood issues.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital minimization that's easier to claim through text while actually being more affected than expressed.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public minimization masking personal concerns while appearing to offer group perspective."
-                },
-                "if you insist": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional reluctant compliance indicating disagreement while avoiding workplace confrontation.",
-                    "boss": "<br><br><em>From boss:</em> Management reluctant agreement indicating they think subordinate requests are unnecessary but avoiding micromanagement.",
-                    "customer": "<br><br><em>From customer:</em> Customer reluctant compliance with service recommendations while maintaining dissatisfaction.",
-                    "stranger": "<br><br><em>From stranger:</em> Social reluctant compliance with stranger requests while avoiding prolonged conflict or engagement.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional reluctant compliance with customer demands while disagreeing with requests.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official reluctant compliance while disagreeing with requests or maintaining institutional boundaries.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating reluctant compliance indicating relationship disagreement while avoiding dating conflicts.",
-                    "friend": "<br><br><em>From friend:</em> Friendship reluctant compliance indicating they think friend requests are unnecessary while maintaining relationships.",
-                    "family": "<br><br><em>From family member:</em> Family reluctant compliance with family requests while disagreeing with family decisions.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship reluctant compliance indicating partnership disagreement while avoiding relationship escalation.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage reluctant compliance with adult demands while maintaining appearance of respect for authority.",
-                    "parent": "<br><br><em>From parent:</em> Parental reluctant compliance with adult children's requests while disagreeing with their choices.",
-                    "child": "<br><br><em>From child:</em> Child copying formal compliance language while potentially not understanding the reluctance implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship reluctant compliance with necessary interactions while maintaining emotional distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community reluctant compliance with neighborhood requests while disagreeing with community decisions.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital reluctant compliance that sounds more formal and distant through text communication.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public reluctant compliance with group decisions while privately disagreeing with group choices."
-                },
-                "suit yourself": {
-                    "work-colleague": "<br><br><em>From colleague:</em> Professional dismissal indicating disagreement while disengaging from workplace decision-making or conflict.",
-                    "boss": "<br><br><em>From boss:</em> Management dismissal indicating they think subordinate choices are wrong while respecting autonomy.",
-                    "customer": "<br><br><em>From customer:</em> Customer dismissal indicating dissatisfaction while disengaging from service interactions or recommendations.",
-                    "stranger": "<br><br><em>From stranger:</em> Social dismissal indicating disagreement while ending engagement with unfamiliar people.",
-                    "service-worker": "<br><br><em>From service worker:</em> Professional dismissal indicating disagreement with customer choices while maintaining service boundaries.",
-                    "authority-figure": "<br><br><em>From authority figure:</em> Official dismissal indicating disagreement while respecting individual autonomy or jurisdictional limits.",
-                    "romantic-interest": "<br><br><em>From romantic interest:</em> Dating dismissal indicating relationship disagreement while emotionally withdrawing from dating involvement.",
-                    "friend": "<br><br><em>From friend:</em> Friendship dismissal indicating they think friend choices are mistakes while protecting friendship boundaries.",
-                    "family": "<br><br><em>From family member:</em> Family dismissal indicating disagreement with family member choices while emotionally withdrawing from family involvement.",
-                    "spouse-partner": "<br><br><em>From spouse/partner:</em> Relationship dismissal indicating strong partnership disagreement while emotionally disengaging from relationship decisions.",
-                    "teenager": "<br><br><em>From teenager:</em> Teenage dismissal indicating disagreement with adult expectations while appearing to respect authority.",
-                    "parent": "<br><br><em>From parent:</em> Parental dismissal indicating disagreement with adult children's choices while respecting their independence.",
-                    "child": "<br><br><em>From child:</em> Child copying dismissive language while potentially not understanding the emotional withdrawal implications.",
-                    "ex-partner": "<br><br><em>From ex-partner:</em> Post-relationship dismissal indicating judgment about your life choices while emphasizing emotional distance.",
-                    "neighbor": "<br><br><em>From neighbor:</em> Community dismissal indicating disagreement with neighborhood or personal choices while withdrawing from community involvement.",
-                    "online-text": "<br><br><em>Via text/online:</em> Digital dismissal that can sound harsher through text than intended vocal delivery.",
-                    "group-setting": "<br><br><em>In group setting:</em> Public dismissal indicating disagreement while withdrawing from group decision-making or involvement."
-                }
-            };
-            
-            if (contextInsights[phrase] && contextInsights[phrase][context]) {
-                return contextInsights[phrase][context];
+        // Allow Enter key to submit
+        document.getElementById('their-message').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                decodeMessage();
             }
-            
-            return "";
-        }
+        });
     </script>
 </body>
 </html>
