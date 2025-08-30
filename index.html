@@ -146,12 +146,6 @@
     <div class="container">
         <h1>Meaningful</h1>
         
-        <!-- API Key Notice -->
-        <div id="api-notice" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
-            <strong>⚠️ Setup Required:</strong> You need to add your Anthropic API key to the code for AI generation to work. 
-            <br>Get one at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>
-        </div>
-
         <div class="input-group">
             <label for="their-message">What they said:</label>
             <textarea id="their-message" placeholder="Enter what they said to you..."></textarea>
@@ -197,6 +191,14 @@
         const supabaseUrl = 'https://jucinztbhrypeuewpswr.supabase.co';
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1Y2luenRiaHJ5cGV1ZXdwc3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTcxODgsImV4cCI6MjA3MjEzMzE4OH0.FyTxraNooNkc9fNRK3DicOC6jRB1POHeYVIpxF5SOXE';
         const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Claude API configuration - REPLACE WITH YOUR ACTUAL API KEY
+        const CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
+        const CLAUDE_API_KEY = "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"; // ← REPLACE THIS LINE WITH YOUR API KEY
+
+        // Global variables to store database data
+        let phrasesData = [];
+        let isLoading = false;
 
         // Function to normalize text for better matching
         function normalizeText(text) {
@@ -247,6 +249,87 @@
             return false;
         }
 
+        // Function to call Claude API
+        async function callClaudeAPI(phrase, context) {
+            const prompt = `What does "${phrase}" really mean when said by a ${context.replace('-', ' ')}? 
+
+Please provide:
+1. The likely hidden meaning or subtext
+2. The emotional motivation behind saying this
+3. What they might actually want or need
+
+Keep the response concise but insightful, around 2-3 sentences total.`;
+
+            try {
+                const response = await fetch(CLAUDE_API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-api-key": CLAUDE_API_KEY,
+                        "anthropic-version": "2023-06-01"
+                    },
+                    body: JSON.stringify({
+                        model: "claude-3-sonnet-20240229",
+                        max_tokens: 300,
+                        messages: [{
+                            role: "user",
+                            content: prompt
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Claude API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data.content[0].text;
+            } catch (error) {
+                console.error('Claude API error:', error);
+                return null;
+            }
+        }
+
+        // Function to cache AI response in database
+        async function cacheAIResponse(userInput, contextType, aiResponse) {
+            try {
+                const { error } = await supabase
+                    .from('ai_generated_responses')
+                    .insert({
+                        user_input: userInput.toLowerCase(),
+                        context_type: contextType,
+                        ai_response: aiResponse
+                    });
+
+                if (error && error.code !== '23505') { // Ignore duplicate key errors
+                    console.error('Error caching AI response:', error);
+                }
+            } catch (error) {
+                console.error('Error caching AI response:', error);
+            }
+        }
+
+        // Function to check for cached AI response
+        async function getCachedAIResponse(userInput, contextType) {
+            try {
+                const { data, error } = await supabase
+                    .from('ai_generated_responses')
+                    .select('ai_response')
+                    .eq('user_input', userInput.toLowerCase())
+                    .eq('context_type', contextType)
+                    .single();
+
+                if (error || !data) {
+                    return null;
+                }
+
+                return data.ai_response;
+            } catch (error) {
+                console.error('Error getting cached AI response:', error);
+                return null;
+            }
+        }
+
         // Load phrases from database on page load
         async function loadPhrasesFromDatabase() {
             try {
@@ -277,17 +360,6 @@
             } finally {
                 isLoading = false;
                 updateLoadingState(false);
-            }
-        }
-
-        function updateLoadingState(loading) {
-            const button = document.querySelector('.decode-button');
-            if (loading) {
-                button.textContent = 'Loading...';
-                button.disabled = true;
-            } else {
-                button.textContent = 'Decode Message';
-                button.disabled = false;
             }
         }
 
