@@ -381,46 +381,32 @@
             return false;
         }
 
-        // Function to call Claude API
+        // Function to call our serverless function
         async function callClaudeAPI(phrase, context) {
-            const prompt = `What does "${phrase}" really mean when said by a ${context.replace('-', ' ')}? 
-
-Please provide:
-1. The likely hidden meaning or subtext
-2. The emotional motivation behind saying this
-3. What they might actually want or need
-
-Keep the response concise but insightful, around 2-3 sentences total.`;
-
             try {
-                const response = await fetch(CLAUDE_API_URL, {
-                    method: "POST",
+                const response = await fetch('/api/decode', {
+                    method: 'POST',
                     headers: {
-                        "Content-Type": "application/json",
-                        "x-api-key": CLAUDE_API_KEY,
-                        "anthropic-version": "2023-06-01"
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        model: "claude-3-sonnet-20240229",
-                        max_tokens: 300,
-                        messages: [{
-                            role: "user",
-                            content: prompt
-                        }]
+                        phrase: phrase,
+                        context: context
                     })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Claude API error: ${response.status}`);
+                    throw new Error(`API error: ${response.status}`);
                 }
 
                 const data = await response.json();
-                return data.content[0].text;
+                return data.response;
             } catch (error) {
-                console.error('Claude API error:', error);
+                console.error('Function call error:', error);
                 return null;
             }
         }
+        
 
         // Function to cache AI response in database
         async function cacheAIResponse(userInput, contextType, aiResponse) {
