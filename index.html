@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meaningful</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: #ffffff;
+            color: #1d1d1f;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
+        }
+
+        .auth-status {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .sign-out-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .sign-out-btn:hover {
+            background: #d32f2f;
+        }
+
+        .input-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 80px;
+            transition: border-color 0.2s ease;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #007aff;
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .decode-button {
+            width: 100%;
+            padding: 16px 24px;
+            background-color: #1d1d1f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 32px 0;
+        }
+
+        .decode-button:hover {
+            background-color: #2d2d2f;
+            transform: translateY(-1px);
+        }
+
+        .decode-button:active {
+            transform: translateY(0);
+        }
+
+        .result-area {
+            background-color: #f5f5f7;
+            border-radius: 12px;
+            padding: 24px;
+            margin-top: 24px;
+            min-height: 120px;
+            display: none;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .result-area.show {
+            display: block;
+        }
+
+        .result-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+        }
+
+        .result-text {
+            line-height: 1.6;
+            color: #424245;
+        }
+
+        .result-text em {
+            font-style: italic;
+            color: #007aff;
+            font-weight: 500;
+        }
+
+        .result-text strong {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .login-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ffffff;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-box {
+            background-color: #f5f5f7;
+            padding: 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #d2d2d7;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin: 16px 0;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 16px 24px;
+            background-color: #1d1d1f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .login-error {
+            color: #e74c3c;
+            margin-top: 12px;
+            font-size: 0.9rem;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-screen" class="login-screen">
+        <div class="login-box">
+            <h2>Access Required</h2>
+            <p>Please enter the password to continue:</p>
+            <input type="password" id="password-input" class="login-input" placeholder="Password">
+            <button onclick="checkPassword()" class="login-button">Access App</button>
+            <div id="login-error" class="login-error hidden">Incorrect password. Try again.</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="auth-status" id="auth-status" style="display: none;">
+            <span>✓ Signed in</span>
+            <button class="sign-out-btn" onclick="signOut()">Sign Out</button>
+        </div>
+        
+        <h1>Meaningful</h1>
+        
+        <div class="input-group">
+            <label for="their-message">What they said:</label>
+            <textarea id="their-message" placeholder="Enter what they said to you..."></textarea>
+        </div>
+        
+        <div class="input-group">
+            <label for="context">Who said it:</label>
+            <select id="context">
+                <option value="">Select who said it</option>
+                <option value="spouse-partner">Spouse/Partner</option>
+                <option value="romantic-interest">Romantic Interest</option>
+                <option value="ex-partner">Ex-Partner</option>
+                <option value="friend">Friend</option>
+                <option value="family">Family Member</option>
+                <option value="parent">Parent</option>
+                <option value="child">Child</option>
+                <option value="teenager">Teenager</option>
+                <option value="boss">Boss/Manager</option>
+                <option value="work-colleague">Work Colleague</option>
+                <option value="customer">Customer/Client</option>
+                <option value="service-worker">Service Worker</option>
+                <option value="authority-figure">Authority Figure</option>
+                <option value="neighbor">Neighbor</option>
+                <option value="stranger">Stranger</option>
+                <option value="online-text">Online/Text</option>
+                <option value="group-setting">Group Setting</option>
+            </select>
+        </div>
+
+        <button class="decode-button" onclick="decodeMessage()">
+            Decode Message
+        </button>
+
+        <div id="result-area" class="result-area">
+            <div class="result-title">Translation:</div>
+            <div id="result-text" class="result-text"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Password protection
+        const SITE_PASSWORD = "meaningful2024"; // Change this to your desired password
+        
+        function checkPassword() {
+            const input = document.getElementById('password-input').value;
+            const errorDiv = document.getElementById('login-error');
+            
+            if (input === SITE_PASSWORD) {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('auth-status').style.display = 'flex';
+                errorDiv.classList.add('hidden');
+                // Store authentication in session
+                sessionStorage.setItem('authenticated', 'true');
+            } else {
+                errorDiv.classList.remove('hidden');
+                document.getElementById('password-input').value = '';
+            }
+        }
+
+        // Check if already authenticated
+        function checkAuthentication() {
+            if (sessionStorage.getItem('authenticated') === 'true') {
+                document.getElementById('login-screen').classList.add('hidden');
+                document.getElementById('auth-status').style.display = 'flex';
+            }
+        }
+
+        // Sign out function
+        function signOut() {
+            sessionStorage.removeItem('authenticated');
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('auth-status').style.display = 'none';
+            document.getElementById('password-input').value = '';
+            document.getElementById('login-error').classList.add('hidden');
+        }
+
+        // Allow Enter key to submit password
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuthentication();
+            
+            document.getElementById('password-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    checkPassword();
+                }
+            });
+        });
+        // Initialize Supabase client
+        const supabaseUrl = 'https://jucinztbhrypeuewpswr.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1Y2luenRiaHJ5cGV1ZXdwc3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTcxODgsImV4cCI6MjA3MjEzMzE4OH0.FyTxraNooNkc9fNRK3DicOC6jRB1POHeYVIpxF5SOXE';
+        const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+        // Claude API configuration
+        const CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
+        const CLAUDE_API_KEY = ""; // Add your API key here after password protection is working
+
+        // Global variables to store database data
+        let phrasesData = [];
+        let isLoading = false;
+
+        // Function to normalize text for better matching
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .replace(/['".,!?;:]/g, '') // Remove punctuation
+                .replace(/\s+/g, ' ') // Normalize spaces
+                .trim();
+        }
+
+        // Function to check if two phrases are similar
+        function phrasesMatch(userPhrase, dbPhrase) {
+            const normalizedUser = normalizeText(userPhrase);
+            const normalizedDb = normalizeText(dbPhrase);
+            
+            // Exact match
+            if (normalizedUser === normalizedDb) return true;
+            
+            // Handle contractions
+            const contractedUser = normalizedUser
+                .replace(/nothing is/g, 'nothings')
+                .replace(/i am/g, 'im')
+                .replace(/you are/g, 'youre')
+                .replace(/it is/g, 'its')
+                .replace(/that is/g, 'thats')
+                .replace(/do not/g, 'dont')
+                .replace(/will not/g, 'wont')
+                .replace(/cannot/g, 'cant');
+                
+            const contractedDb = normalizedDb
+                .replace(/nothing is/g, 'nothings')
+                .replace(/i am/g, 'im')
+                .replace(/you are/g, 'youre')
+                .replace(/it is/g, 'its')
+                .replace(/that is/g, 'thats')
+                .replace(/do not/g, 'dont')
+                .replace(/will not/g, 'wont')
+                .replace(/cannot/g, 'cant');
+            
+            if (contractedUser === contractedDb) return true;
+            
+            // Check if one contains the other (for partial matches)
+            if (normalizedUser.includes(normalizedDb) || normalizedDb.includes(normalizedUser)) return true;
+            
+            // Check contracted versions contain each other
+            if (contractedUser.includes(contractedDb) || contractedDb.includes(contractedUser)) return true;
+            
+            return false;
+        }
+
+        // Function to call Claude API
+        async function callClaudeAPI(phrase, context) {
+            const prompt = `What does "${phrase}" really mean when said by a ${context.replace('-', ' ')}? 
+
+Please provide:
+1. The likely hidden meaning or subtext
+2. The emotional motivation behind saying this
+3. What they might actually want or need
+
+Keep the response concise but insightful, around 2-3 sentences total.`;
+
+            try {
+                const response = await fetch(CLAUDE_API_URL, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-api-key": CLAUDE_API_KEY,
+                        "anthropic-version": "2023-06-01"
+                    },
+                    body: JSON.stringify({
+                        model: "claude-3-sonnet-20240229",
+                        max_tokens: 300,
+                        messages: [{
+                            role: "user",
+                            content: prompt
+                        }]
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Claude API error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data.content[0].text;
+            } catch (error) {
+                console.error('Claude API error:', error);
+                return null;
+            }
+        }
+
+        // Function to cache AI response in database
+        async function cacheAIResponse(userInput, contextType, aiResponse) {
+            try {
+                const { error } = await supabase
+                    .from('ai_generated_responses')
+                    .insert({
+                        user_input: userInput.toLowerCase(),
+                        context_type: contextType,
+                        ai_response: aiResponse
+                    });
+
+                if (error && error.code !== '23505') { // Ignore duplicate key errors
+                    console.error('Error caching AI response:', error);
+                }
+            } catch (error) {
+                console.error('Error caching AI response:', error);
+            }
+        }
+
+        // Function to check for cached AI response
+        async function getCachedAIResponse(userInput, contextType) {
+            try {
+                const { data, error } = await supabase
+                    .from('ai_generated_responses')
+                    .select('ai_response')
+                    .eq('user_input', userInput.toLowerCase())
+                    .eq('context_type', contextType)
+                    .single();
+
+                if (error || !data) {
+                    return null;
+                }
+
+                return data.ai_response;
+            } catch (error) {
+                console.error('Error getting cached AI response:', error);
+                return null;
+            }
+        }
+
+        // Load phrases from database on page load
+        async function loadPhrasesFromDatabase() {
+            try {
+                isLoading = true;
+                updateLoadingState(true);
+                
+                const { data, error } = await supabase
+                    .from('phrases')
+                    .select(`
+                        id,
+                        phrase_text,
+                        general_meaning,
+                        category,
+                        context_interpretations (
+                            context_type,
+                            interpretation
+                        )
+                    `);
+
+                if (error) throw error;
+                
+                phrasesData = data;
+                console.log('Loaded phrases from database:', phrasesData.length);
+                
+            } catch (error) {
+                console.error('Error loading phrases:', error);
+                showError('Failed to load phrase database. Please try again.');
+            } finally {
+                isLoading = false;
+                updateLoadingState(false);
+            }
+        }
+
+        function showError(message) {
+            const resultArea = document.getElementById('result-area');
+            const resultText = document.getElementById('result-text');
+            resultText.innerHTML = `<strong style="color: #e74c3c;">Error:</strong> ${message}`;
+            resultArea.classList.add('show');
+        }
+
+        async function decodeMessage() {
+            const resultArea = document.getElementById('result-area');
+            const resultText = document.getElementById('result-text');
+            
+            const messageToAnalyze = document.getElementById('their-message').value.trim().toLowerCase();
+            const context = document.getElementById('context').value;
+            
+            if (!messageToAnalyze) {
+                resultText.innerHTML = "Please enter what they said.";
+                resultArea.classList.add('show');
+                return;
+            }
+
+            if (!context) {
+                resultText.innerHTML = "Please select who said it.";
+                resultArea.classList.add('show');
+                return;
+            }
+
+            // Show loading state
+            updateLoadingState(true, "Analyzing...");
+            
+            try {
+                // TIER 1: Check manual phrases database
+                if (phrasesData.length === 0) {
+                    await loadPhrasesFromDatabase();
+                }
+
+                let match = phrasesData.find(phrase => phrasesMatch(messageToAnalyze, phrase.phrase_text));
+                
+                if (match) {
+                    // Found in manual database
+                    let result = `<strong>Curated interpretation:</strong><br>"${match.general_meaning}"`;
+                    
+                    const contextInterpretation = match.context_interpretations.find(
+                        ci => ci.context_type === context
+                    );
+                    
+                    if (contextInterpretation) {
+                        const contextLabel = context.replace('-', ' ');
+                        result += `<br><br><strong>From ${contextLabel}:</strong><br>${contextInterpretation.interpretation}`;
+                    }
+                    
+                    resultText.innerHTML = result;
+                    updateLoadingState(false);
+                    resultArea.classList.add('show');
+                    return;
+                }
+
+                // TIER 2: Check cached AI responses
+                const cachedResponse = await getCachedAIResponse(messageToAnalyze, context);
+                if (cachedResponse) {
+                    const contextLabel = context.replace('-', ' ');
+                    resultText.innerHTML = `<strong>AI interpretation (cached):</strong><br>${cachedResponse}<br><br><em>From ${contextLabel}</em>`;
+                    updateLoadingState(false);
+                    resultArea.classList.add('show');
+                    return;
+                }
+
+                // TIER 3: Generate new AI response
+                updateLoadingState(true, "Generating AI interpretation...");
+                const aiResponse = await callClaudeAPI(messageToAnalyze, context);
+                
+                if (aiResponse) {
+                    // Cache the response for future use
+                    await cacheAIResponse(messageToAnalyze, context, aiResponse);
+                    
+                    const contextLabel = context.replace('-', ' ');
+                    resultText.innerHTML = `<strong>AI interpretation (new):</strong><br>${aiResponse}<br><br><em>From ${contextLabel}</em>`;
+                } else {
+                    // AI failed, show fallback message
+                    resultText.innerHTML = `<strong>Analysis unavailable:</strong><br>Unable to generate interpretation at this time. This could be straightforward communication, or there might be hidden meaning depending on your relationship context.`;
+                }
+                
+            } catch (error) {
+                console.error('Error in decode process:', error);
+                showError('An error occurred while analyzing the message. Please try again.');
+            } finally {
+                updateLoadingState(false);
+                resultArea.classList.add('show');
+            }
+        }
+
+        function updateLoadingState(loading, message = 'Loading...') {
+            const button = document.querySelector('.decode-button');
+            if (loading) {
+                button.textContent = message;
+                button.disabled = true;
+            } else {
+                button.textContent = 'Decode Message';
+                button.disabled = false;
+            }
+        }
+
+        // Load phrases when page loads
+        document.addEventListener('DOMContentLoaded', loadPhrasesFromDatabase);
+
+        // Allow Enter key to submit
+        document.getElementById('their-message').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                decodeMessage();
+            }
+        });
+    </script>
+</body>
+</html>
