@@ -146,6 +146,12 @@
     <div class="container">
         <h1>Meaningful</h1>
         
+        <!-- API Key Notice -->
+        <div id="api-notice" style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 16px; border-radius: 8px; margin-bottom: 24px;">
+            <strong>⚠️ Setup Required:</strong> You need to add your Anthropic API key to the code for AI generation to work. 
+            <br>Get one at <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>
+        </div>
+
         <div class="input-group">
             <label for="their-message">What they said:</label>
             <textarea id="their-message" placeholder="Enter what they said to you..."></textarea>
@@ -305,29 +311,27 @@
                 return;
             }
 
-            if (isLoading) {
-                resultText.innerHTML = "Please wait, loading phrase database...";
+            if (!context) {
+                resultText.innerHTML = "Please select who said it.";
                 resultArea.classList.add('show');
                 return;
             }
+
+            // Show loading state
+            updateLoadingState(true, "Analyzing...");
             
-            // If no data loaded yet, try to load it
-            if (phrasesData.length === 0) {
-                await loadPhrasesFromDatabase();
+            try {
+                // TIER 1: Check manual phrases database
                 if (phrasesData.length === 0) {
-                    showError('No phrases loaded from database.');
-                    return;
+                    await loadPhrasesFromDatabase();
                 }
-            }
-            
-            // Look for matches using improved matching
-            let match = phrasesData.find(phrase => phrasesMatch(messageToAnalyze, phrase.phrase_text));
-            
-            if (match) {
-                let result = `<strong>General meaning:</strong><br>"${match.general_meaning}"`;
+
+                let match = phrasesData.find(phrase => phrasesMatch(messageToAnalyze, phrase.phrase_text));
                 
-                // Add context-specific interpretation if available
-                if (context && match.context_interpretations) {
+                if (match) {
+                    // Found in manual database
+                    let result = `<strong>Curated interpretation:</strong><br>"${match.general_meaning}"`;
+                    
                     const contextInterpretation = match.context_interpretations.find(
                         ci => ci.context_type === context
                     );
@@ -336,14 +340,56 @@
                         const contextLabel = context.replace('-', ' ');
                         result += `<br><br><strong>From ${contextLabel}:</strong><br>${contextInterpretation.interpretation}`;
                     }
+                    
+                    resultText.innerHTML = result;
+                    updateLoadingState(false);
+                    resultArea.classList.add('show');
+                    return;
+                }
+
+                // TIER 2: Check cached AI responses
+                const cachedResponse = await getCachedAIResponse(messageToAnalyze, context);
+                if (cachedResponse) {
+                    const contextLabel = context.replace('-', ' ');
+                    resultText.innerHTML = `<strong>AI interpretation (cached):</strong><br>${cachedResponse}<br><br><em>From ${contextLabel}</em>`;
+                    updateLoadingState(false);
+                    resultArea.classList.add('show');
+                    return;
+                }
+
+                // TIER 3: Generate new AI response
+                updateLoadingState(true, "Generating AI interpretation...");
+                const aiResponse = await callClaudeAPI(messageToAnalyze, context);
+                
+                if (aiResponse) {
+                    // Cache the response for future use
+                    await cacheAIResponse(messageToAnalyze, context, aiResponse);
+                    
+                    const contextLabel = context.replace('-', ' ');
+                    resultText.innerHTML = `<strong>AI interpretation (new):</strong><br>${aiResponse}<br><br><em>From ${contextLabel}</em>`;
+                } else {
+                    // AI failed, show fallback message
+                    resultText.innerHTML = `<strong>Analysis unavailable:</strong><br>Unable to generate interpretation at this time. This could be straightforward communication, or there might be hidden meaning depending on your relationship context.`;
                 }
                 
-                resultText.innerHTML = result;
-            } else {
-                resultText.innerHTML = `<strong>No direct translation found.</strong><br>This might be straightforward, or it could be context-specific. Consider the relationship and situation for potential hidden meanings.`;
+            } catch (error) {
+                console.error('Error in decode process:', error);
+                showError('An error occurred while analyzing the message. Please try again.');
+            } finally {
+                updateLoadingState(false);
+                resultArea.classList.add('show');
             }
-            
-            resultArea.classList.add('show');
+        }
+
+        function updateLoadingState(loading, message = 'Loading...') {
+            const button = document.querySelector('.decode-button');
+            if (loading) {
+                button.textContent = message;
+                button.disabled = true;
+            } else {
+                button.textContent = 'Decode Message';
+                button.disabled = false;
+            }
         }
 
         // Load phrases when page loads
