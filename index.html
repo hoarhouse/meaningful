@@ -291,14 +291,9 @@
         const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imp1Y2luenRiaHJ5cGV1ZXdwc3dyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY1NTcxODgsImV4cCI6MjA3MjEzMzE4OH0.FyTxraNooNkc9fNRK3DicOC6jRB1POHeYVIpxF5SOXE';
         const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
-        // Claude API configuration - ADD YOUR API KEY TO A .ENV FILE OR CONFIG
+        // Claude API configuration
         const CLAUDE_API_URL = "https://api.anthropic.com/v1/messages";
-        const CLAUDE_API_KEY = process.env.ANTHROPIC_API_KEY || ""; // Set this via environment variable
-        
-        // Check if API key is configured
-        if (!CLAUDE_API_KEY) {
-            console.warn('Anthropic API key not configured. AI generation will not work.');
-        }
+        const CLAUDE_API_KEY = ""; // Add your API key here after password protection is working
 
         // Global variables to store database data
         let phrasesData = [];
